@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>TryHackMe | Web Fundamentals</title><meta name="description" content="TryHackMe is an online platform for learning and teaching cyber security, all through your browser."><meta name="keywords" content="cyber,security,coding,computer,bitcoin,hacking,hackers,hacks,hack,exploits,keylogger,learn,poc"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta property="og:site_name" content="TryHackMe"><meta property="og:title" content="TryHackMe | Web Fundamentals"><meta property="og:image" content="https://tryhackme-images.s3.amazonaws.com/room-icons/c969a5ba19bfe2a3da8000e7db4a03bb.png"><meta property="og:url" content="https://tryhackme.com/room/webfundamentals"><meta property="og:description" content="Learn how the web works!"><meta charset="utf-8"><script type="text/javascript" async="" src="TryHackMe%20|%20Web%20Fundamentals_files/analytics.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/socket.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/jquery.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/popper.js"></script><link rel="stylesheet" href="TryHackMe%20|%20Web%20Fundamentals_files/boostrap431.css"><script src="TryHackMe%20|%20Web%20Fundamentals_files/bootstrap431.js"></script><link rel="stylesheet" href="TryHackMe%20|%20Web%20Fundamentals_files/animate.css"><link rel="stylesheet" href="TryHackMe%20|%20Web%20Fundamentals_files/all.css" integrity="sha384-ekOryaXPbeCpWQNxMwSWVvQ0+1VrStoPJq54shlYhR8HzQgig1v5fas6YgOqLoKz" crossorigin="anonymous"><link rel="icon" type="image/png" href="https://assets.tryhackme.com/img/favicon.png"><link rel="stylesheet" media="screen" href="TryHackMe%20|%20Web%20Fundamentals_files/general-style.css"><script src="TryHackMe%20|%20Web%20Fundamentals_files/script.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/validation.js"></script><link rel="stylesheet" type="text/css" href="TryHackMe%20|%20Web%20Fundamentals_files/cookieconsent.css"><script src="TryHackMe%20|%20Web%20Fundamentals_files/cookieconsent.js"></script><script async="" src="TryHackMe%20|%20Web%20Fundamentals_files/js.js"></script><script>var a0_0x208f=['UA-129037102-1','push','config','dataLayer'];(function(_0x5bd8c0,_0x208f44){var _0x25d1ca=function(_0x368488){while(--_0x368488){_0x5bd8c0['push'](_0x5bd8c0['shift']());}};_0x25d1ca(++_0x208f44);}(a0_0x208f,0x1e6));var a0_0x25d1=function(_0x5bd8c0,_0x208f44){_0x5bd8c0=_0x5bd8c0-0x0;var _0x25d1ca=a0_0x208f[_0x5bd8c0];return _0x25d1ca;};window[a0_0x25d1('0x1')]=window['dataLayer']||[];function gtag(){dataLayer[a0_0x25d1('0x3')](arguments);}gtag('js',new Date());gtag(a0_0x25d1('0x0'),a0_0x25d1('0x2'));</script><script>const username='mark42';const subscribed='1';const level='1';</script><script>const a0_0x130d=['appendChild','hjsv','_hjSettings','push','https://static.hotjar.com/c/hotjar-','identify','true','getElementsByTagName','hjid','createElement'];(function(_0x39489d,_0x130d9e){const _0x599b0c=function(_0x40fb81){while(--_0x40fb81){_0x39489d['push'](_0x39489d['shift']());}};_0x599b0c(++_0x130d9e);}(a0_0x130d,0x154));const a0_0x599b=function(_0x39489d,_0x130d9e){_0x39489d=_0x39489d-0x0;let _0x599b0c=a0_0x130d[_0x39489d];return _0x599b0c;};const userId='5f4678fcbcada66141bbcea5';let tutorialComplete=![];if('false'==a0_0x599b('0x6')){tutorialComplete=!![];}(function(_0x98946b,_0xfade40,_0x372cf2,_0x5d105e,_0x4fe017,_0x2840cc){_0x98946b['hj']=_0x98946b['hj']||function(){(_0x98946b['hj']['q']=_0x98946b['hj']['q']||[])[a0_0x599b('0x3')](arguments);};_0x98946b[a0_0x599b('0x2')]={'hjid':0x1dc4dd,'hjsv':0x6};_0x4fe017=_0xfade40[a0_0x599b('0x7')]('head')[0x0];_0x2840cc=_0xfade40[a0_0x599b('0x9')]('script');_0x2840cc['async']=0x1;_0x2840cc['src']=_0x372cf2+_0x98946b[a0_0x599b('0x2')][a0_0x599b('0x8')]+_0x5d105e+_0x98946b[a0_0x599b('0x2')][a0_0x599b('0x1')];_0x4fe017[a0_0x599b('0x0')](_0x2840cc);}(window,document,a0_0x599b('0x4'),'.js?sv='));window['hj'](a0_0x599b('0x5'),userId,{'displayName':username,'subscribed':'1','dateSignedUp':'Wed Aug 26 2020 16:00:12 GMT+0100 (British Summer Time)'});</script><script async="" src="TryHackMe%20|%20Web%20Fundamentals_files/hotjar-1950941.js"></script><script>var a0_0x620f=['font-family:monospace','log','%c\x0a\x20\x20\x20\x20\x20\x20------------------\x0a\x20\x20\x20\x20\x20\x20<\x20Happy\x20Hacking!\x20>\x0a\x20\x20\x20\x20\x20\x20------------------\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5c\x20\x20\x20^__^\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5c\x20\x20(oo)\x5c_______\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20(__)\x5c\x20\x20\x20\x20\x20\x20\x20)\x5c/\x5c\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20||----w\x20|\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20||\x20\x20\x20\x20\x20||'];(function(_0x104c93,_0x620f96){var _0x1ef292=function(_0x382bff){while(--_0x382bff){_0x104c93['push'](_0x104c93['shift']());}};_0x1ef292(++_0x620f96);}(a0_0x620f,0xa8));var a0_0x1ef2=function(_0x104c93,_0x620f96){_0x104c93=_0x104c93-0x0;var _0x1ef292=a0_0x620f[_0x104c93];return _0x1ef292;};console[a0_0x1ef2('0x1')](a0_0x1ef2('0x2'),a0_0x1ef2('0x0'));</script><style type="text/css">.apexcharts-canvas {
+  position: relative;
+  user-select: none;
+  /* cannot give overflow: hidden as it will crop tooltips which overflow outside chart area */
+}
+
+
+/* scrollbar is not visible by default for legend, hence forcing the visibility */
+.apexcharts-canvas ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 6px;
+}
+
+.apexcharts-canvas ::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+
+.apexcharts-inner {
+  position: relative;
+}
+
+.apexcharts-text tspan {
+  font-family: inherit;
+}
+
+.legend-mouseover-inactive {
+  transition: 0.15s ease all;
+  opacity: 0.20;
+}
+
+.apexcharts-series-collapsed {
+  opacity: 0;
+}
+
+.apexcharts-tooltip {
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px -4px #999;
+  cursor: default;
+  font-size: 14px;
+  left: 62px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 12;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-tooltip.apexcharts-active {
+  opacity: 1;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-tooltip.apexcharts-theme-light {
+  border: 1px solid #e3e3e3;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.apexcharts-tooltip.apexcharts-theme-dark {
+  color: #fff;
+  background: rgba(30, 30, 30, 0.8);
+}
+
+.apexcharts-tooltip * {
+  font-family: inherit;
+}
+
+
+.apexcharts-tooltip-title {
+  padding: 6px;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
+  background: #ECEFF1;
+  border-bottom: 1px solid #ddd;
+}
+
+.apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {
+  background: rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid #333;
+}
+
+.apexcharts-tooltip-text-value,
+.apexcharts-tooltip-text-z-value {
+  display: inline-block;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.apexcharts-tooltip-text-z-label:empty,
+.apexcharts-tooltip-text-z-value:empty {
+  display: none;
+}
+
+.apexcharts-tooltip-text-value,
+.apexcharts-tooltip-text-z-value {
+  font-weight: 600;
+}
+
+.apexcharts-tooltip-marker {
+  width: 12px;
+  height: 12px;
+  position: relative;
+  top: 0px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.apexcharts-tooltip-series-group {
+  padding: 0 10px;
+  display: none;
+  text-align: left;
+  justify-content: left;
+  align-items: center;
+}
+
+.apexcharts-tooltip-series-group.apexcharts-active .apexcharts-tooltip-marker {
+  opacity: 1;
+}
+
+.apexcharts-tooltip-series-group.apexcharts-active,
+.apexcharts-tooltip-series-group:last-child {
+  padding-bottom: 4px;
+}
+
+.apexcharts-tooltip-series-group-hidden {
+  opacity: 0;
+  height: 0;
+  line-height: 0;
+  padding: 0 !important;
+}
+
+.apexcharts-tooltip-y-group {
+  padding: 6px 0 5px;
+}
+
+.apexcharts-tooltip-candlestick {
+  padding: 4px 8px;
+}
+
+.apexcharts-tooltip-candlestick>div {
+  margin: 4px 0;
+}
+
+.apexcharts-tooltip-candlestick span.value {
+  font-weight: bold;
+}
+
+.apexcharts-tooltip-rangebar {
+  padding: 5px 8px;
+}
+
+.apexcharts-tooltip-rangebar .category {
+  font-weight: 600;
+  color: #777;
+}
+
+.apexcharts-tooltip-rangebar .series-name {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.apexcharts-xaxistooltip {
+  opacity: 0;
+  padding: 9px 10px;
+  pointer-events: none;
+  color: #373d3f;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+  background: #ECEFF1;
+  border: 1px solid #90A4AE;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-xaxistooltip.apexcharts-theme-dark {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.apexcharts-xaxistooltip:after,
+.apexcharts-xaxistooltip:before {
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.apexcharts-xaxistooltip:after {
+  border-color: rgba(236, 239, 241, 0);
+  border-width: 6px;
+  margin-left: -6px;
+}
+
+.apexcharts-xaxistooltip:before {
+  border-color: rgba(144, 164, 174, 0);
+  border-width: 7px;
+  margin-left: -7px;
+}
+
+.apexcharts-xaxistooltip-bottom:after,
+.apexcharts-xaxistooltip-bottom:before {
+  bottom: 100%;
+}
+
+.apexcharts-xaxistooltip-top:after,
+.apexcharts-xaxistooltip-top:before {
+  top: 100%;
+}
+
+.apexcharts-xaxistooltip-bottom:after {
+  border-bottom-color: #ECEFF1;
+}
+
+.apexcharts-xaxistooltip-bottom:before {
+  border-bottom-color: #90A4AE;
+}
+
+.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:after {
+  border-bottom-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:before {
+  border-bottom-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip-top:after {
+  border-top-color: #ECEFF1
+}
+
+.apexcharts-xaxistooltip-top:before {
+  border-top-color: #90A4AE;
+}
+
+.apexcharts-xaxistooltip-top.apexcharts-theme-dark:after {
+  border-top-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip-top.apexcharts-theme-dark:before {
+  border-top-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip.apexcharts-active {
+  opacity: 1;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-yaxistooltip {
+  opacity: 0;
+  padding: 4px 10px;
+  pointer-events: none;
+  color: #373d3f;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+  background: #ECEFF1;
+  border: 1px solid #90A4AE;
+}
+
+.apexcharts-yaxistooltip.apexcharts-theme-dark {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.apexcharts-yaxistooltip:after,
+.apexcharts-yaxistooltip:before {
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.apexcharts-yaxistooltip:after {
+  border-color: rgba(236, 239, 241, 0);
+  border-width: 6px;
+  margin-top: -6px;
+}
+
+.apexcharts-yaxistooltip:before {
+  border-color: rgba(144, 164, 174, 0);
+  border-width: 7px;
+  margin-top: -7px;
+}
+
+.apexcharts-yaxistooltip-left:after,
+.apexcharts-yaxistooltip-left:before {
+  left: 100%;
+}
+
+.apexcharts-yaxistooltip-right:after,
+.apexcharts-yaxistooltip-right:before {
+  right: 100%;
+}
+
+.apexcharts-yaxistooltip-left:after {
+  border-left-color: #ECEFF1;
+}
+
+.apexcharts-yaxistooltip-left:before {
+  border-left-color: #90A4AE;
+}
+
+.apexcharts-yaxistooltip-left.apexcharts-theme-dark:after {
+  border-left-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip-left.apexcharts-theme-dark:before {
+  border-left-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip-right:after {
+  border-right-color: #ECEFF1;
+}
+
+.apexcharts-yaxistooltip-right:before {
+  border-right-color: #90A4AE;
+}
+
+.apexcharts-yaxistooltip-right.apexcharts-theme-dark:after {
+  border-right-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip-right.apexcharts-theme-dark:before {
+  border-right-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip.apexcharts-active {
+  opacity: 1;
+}
+
+.apexcharts-yaxistooltip-hidden {
+  display: none;
+}
+
+.apexcharts-xcrosshairs,
+.apexcharts-ycrosshairs {
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-xcrosshairs.apexcharts-active,
+.apexcharts-ycrosshairs.apexcharts-active {
+  opacity: 1;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-ycrosshairs-hidden {
+  opacity: 0;
+}
+
+.apexcharts-selection-rect {
+  cursor: move;
+}
+
+.svg_select_boundingRect, .svg_select_points_rot {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+.apexcharts-selection-rect + g .svg_select_boundingRect,
+.apexcharts-selection-rect + g .svg_select_points_rot {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.apexcharts-selection-rect + g .svg_select_points_l,
+.apexcharts-selection-rect + g .svg_select_points_r {
+  cursor: ew-resize;
+  opacity: 1;
+  visibility: visible;
+}
+
+.svg_select_points {
+  fill: #efefef;
+  stroke: #333;
+  rx: 2;
+}
+
+.apexcharts-svg.apexcharts-zoomable.hovering-zoom {
+  cursor: crosshair
+}
+
+.apexcharts-svg.apexcharts-zoomable.hovering-pan {
+  cursor: move
+}
+
+.apexcharts-zoom-icon,
+.apexcharts-zoomin-icon,
+.apexcharts-zoomout-icon,
+.apexcharts-reset-icon,
+.apexcharts-pan-icon,
+.apexcharts-selection-icon,
+.apexcharts-menu-icon,
+.apexcharts-toolbar-custom-icon {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  line-height: 24px;
+  color: #6E8192;
+  text-align: center;
+}
+
+.apexcharts-zoom-icon svg,
+.apexcharts-zoomin-icon svg,
+.apexcharts-zoomout-icon svg,
+.apexcharts-reset-icon svg,
+.apexcharts-menu-icon svg {
+  fill: #6E8192;
+}
+
+.apexcharts-selection-icon svg {
+  fill: #444;
+  transform: scale(0.76)
+}
+
+.apexcharts-theme-dark .apexcharts-zoom-icon svg,
+.apexcharts-theme-dark .apexcharts-zoomin-icon svg,
+.apexcharts-theme-dark .apexcharts-zoomout-icon svg,
+.apexcharts-theme-dark .apexcharts-reset-icon svg,
+.apexcharts-theme-dark .apexcharts-pan-icon svg,
+.apexcharts-theme-dark .apexcharts-selection-icon svg,
+.apexcharts-theme-dark .apexcharts-menu-icon svg,
+.apexcharts-theme-dark .apexcharts-toolbar-custom-icon svg {
+  fill: #f3f4f5;
+}
+
+.apexcharts-canvas .apexcharts-zoom-icon.apexcharts-selected svg,
+.apexcharts-canvas .apexcharts-selection-icon.apexcharts-selected svg,
+.apexcharts-canvas .apexcharts-reset-zoom-icon.apexcharts-selected svg {
+  fill: #008FFB;
+}
+
+.apexcharts-theme-light .apexcharts-selection-icon:not(.apexcharts-selected):hover svg,
+.apexcharts-theme-light .apexcharts-zoom-icon:not(.apexcharts-selected):hover svg,
+.apexcharts-theme-light .apexcharts-zoomin-icon:hover svg,
+.apexcharts-theme-light .apexcharts-zoomout-icon:hover svg,
+.apexcharts-theme-light .apexcharts-reset-icon:hover svg,
+.apexcharts-theme-light .apexcharts-menu-icon:hover svg {
+  fill: #333;
+}
+
+.apexcharts-selection-icon,
+.apexcharts-menu-icon {
+  position: relative;
+}
+
+.apexcharts-reset-icon {
+  margin-left: 5px;
+}
+
+.apexcharts-zoom-icon,
+.apexcharts-reset-icon,
+.apexcharts-menu-icon {
+  transform: scale(0.85);
+}
+
+.apexcharts-zoomin-icon,
+.apexcharts-zoomout-icon {
+  transform: scale(0.7)
+}
+
+.apexcharts-zoomout-icon {
+  margin-right: 3px;
+}
+
+.apexcharts-pan-icon {
+  transform: scale(0.62);
+  position: relative;
+  left: 1px;
+  top: 0px;
+}
+
+.apexcharts-pan-icon svg {
+  fill: #fff;
+  stroke: #6E8192;
+  stroke-width: 2;
+}
+
+.apexcharts-pan-icon.apexcharts-selected svg {
+  stroke: #008FFB;
+}
+
+.apexcharts-pan-icon:not(.apexcharts-selected):hover svg {
+  stroke: #333;
+}
+
+.apexcharts-toolbar {
+  position: absolute;
+  z-index: 11;
+  max-width: 176px;
+  text-align: right;
+  border-radius: 3px;
+  padding: 0px 6px 2px 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.apexcharts-menu {
+  background: #fff;
+  position: absolute;
+  top: 100%;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 3px;
+  right: 10px;
+  opacity: 0;
+  min-width: 110px;
+  transition: 0.15s ease all;
+  pointer-events: none;
+}
+
+.apexcharts-menu.apexcharts-menu-open {
+  opacity: 1;
+  pointer-events: all;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-menu-item {
+  padding: 6px 7px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.apexcharts-theme-light .apexcharts-menu-item:hover {
+  background: #eee;
+}
+
+.apexcharts-theme-dark .apexcharts-menu {
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .apexcharts-canvas:hover .apexcharts-toolbar {
+    opacity: 1;
+  }
+}
+
+.apexcharts-datalabel.apexcharts-element-hidden {
+  opacity: 0;
+}
+
+.apexcharts-pie-label,
+.apexcharts-datalabels,
+.apexcharts-datalabel,
+.apexcharts-datalabel-label,
+.apexcharts-datalabel-value {
+  cursor: default;
+  pointer-events: none;
+}
+
+.apexcharts-pie-label-delay {
+  opacity: 0;
+  animation-name: opaque;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+.apexcharts-canvas .apexcharts-element-hidden {
+  opacity: 0;
+}
+
+.apexcharts-hide .apexcharts-series-points {
+  opacity: 0;
+}
+
+.apexcharts-gridline,
+.apexcharts-annotation-rect,
+.apexcharts-tooltip .apexcharts-marker,
+.apexcharts-area-series .apexcharts-area,
+.apexcharts-line,
+.apexcharts-zoom-rect,
+.apexcharts-toolbar svg,
+.apexcharts-area-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+.apexcharts-line-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+.apexcharts-radar-series path,
+.apexcharts-radar-series polygon {
+  pointer-events: none;
+}
+
+
+/* markers */
+
+.apexcharts-marker {
+  transition: 0.15s ease all;
+}
+
+@keyframes opaque {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* Resize generated styles */
+
+@keyframes resizeanim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.resize-triggers {
+  animation: 1ms resizeanim;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.resize-triggers,
+.resize-triggers>div,
+.contract-trigger:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.resize-triggers>div {
+  background: #eee;
+  overflow: auto;
+}
+
+.contract-trigger:before {
+  width: 200%;
+  height: 200%;
+}</style><script async="" src="TryHackMe%20|%20Web%20Fundamentals_files/modules.js" charset="utf-8"></script><style type="text/css">iframe#_hjRemoteVarsFrame {display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;}</style><style></style></head><body><div role="dialog" aria-live="polite" aria-label="cookieconsent" aria-describedby="cookieconsent:desc" class="cc-window cc-floating cc-type-info cc-theme-classic cc-bottom cc-right cc-color-override-382972913 cc-invisible" style="display: none;"><!--googleoff: all--><span id="cookieconsent:desc" class="cc-message">We uses cookies to ensure you get the best user experience. For more information contact us. <a aria-label="learn more about cookies" role="button" tabindex="0" class="cc-link" href="https://tryhackme.com/terms" target="_blank">Read more</a></span><div class="cc-compliance"><a aria-label="dismiss cookie message" role="button" tabindex="0" class="cc-btn cc-dismiss">Got it!</a></div><!--googleon: all--></div><nav class="navbar navbar-expand-sm navbar-dark navbar-colour"> <div class="container-fluid"><div class="navbar-brand" href="/"><a href="https://tryhackme.com/"><img src="TryHackMe%20|%20Web%20Fundamentals_files/THMlogo.png" alt="TryHackMe" class="logo" width="135"></a></div><ul class="navbar-nav navbar-right options"><li class="nav-item"><a href="#menu-toggle" class="collapse-button" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></li></ul><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent"><ul class="navbar-nav navbar-right options vertical-align-custom"><li class="nav-item dropdown"><a class="nav-link vertical-align-custom size-24" href="#" id="notification-btn" role="button" data-toggle="dropdown"><i id="notification-icon" class="fal fa-bell animated swing"></i><div id="notification-dot" style="display: block;"></div></a><div id="nav-notification" class="dropdown-menu dropdown-menu-right"><div id="notification-header">Notifications</div><div id="nav-notifications" style="padding: 0px;"><div class="row notification">
+                          <div class="col-auto text-center"><i class="fad fa-info-square small text-blue size-14"></i></div>
+                          <div class="col p-0">
+                            <div>Welcome to TryHackMe, mark42. If you have any problems,
+                            read our <a href="https://tryhackme.com/tutorial">tutorial</a> page or join our
+                            <a href="https://discord.gg/tryhackme">discord</a>. Happy Hacking!</div>
+                            <div class="size-12 faded mt-1">26th Aug 2020</div>
+                          </div>
+                        </div></div></div></li><li class="nav-item"><a class="nav-link vertical-align-custom size-24" href="https://tryhackme.com/feedback"><span data-placement="bottom" data-toggle="tooltip" title="" data-original-title="Give Feedback"><i class="fal fa-comment-alt-edit"></i></span></a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle remove-arrow p-0" href="#" id="navbarAvatarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="TryHackMe%20|%20Web%20Fundamentals_files/a826fe3b2eeb5607c65f420bd4664c4c.png" class="rounded-circle navbar-user-avatar"></a><div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarAvatarDropdown"><a class="dropdown-item" href="https://tryhackme.com/profile"><i class="far fa-user-circle faded size-14"></i> Profile</a><a class="dropdown-item" href="https://tryhackme.com/badges"><i class="fas fa-award faded size-14"></i> Badges</a><a class="dropdown-item" href="https://tryhackme.com/logout"><i class="far fa-lock faded size-14"></i> Logout</a></div></li></ul></div></div></nav><div id="wrapper" class="toggled"> <div id="sidebar-wrapper"><ul class="sidebar-nav"><li class="sidebar-brand notli p-both-20"><div class="moto">*Morpheus*: Red or Blue pill?</div></li><script src="TryHackMe%20|%20Web%20Fundamentals_files/notifications.js"></script><li class="sidebar-stats notli"><div><span id="streak-popover" data-container="body" data-trigger="hover" data-toggle="popover" data-html="true" data-placement="bottom" data-content="&lt;p class='mb-2'&gt;Complete a question every day to build your hacking streak&lt;/p&gt;
+
+&lt;ul class='size-12 m-0 pl-0 faded inline text-center'&gt;
+  &lt;li class='mr-3'&gt;&lt;b&gt;7&lt;/b&gt; &lt;i class='fas fa-fire-alt hacker-green'&gt;&lt;/i&gt; = badge&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;30&lt;/b&gt; &lt;i class='fas fa-fire-alt hacker-green'&gt;&lt;/i&gt; = badge&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul class='size-12 m-0 pl-0 mt-1 faded inline text-center'&gt;
+  &lt;li&gt;&lt;b&gt;45&lt;/b&gt; &lt;i class='fas fa-fire-alt hacker-green'&gt;&lt;/i&gt; = 5% off swag&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- &lt;p id='user-streak-remaining' class='text-center size-12 faded mt-2 mb-0'&gt;s&lt;/p&gt; --&gt;
+" data-original-title="" title="">Streak: <span id="user-streak" class="hacker-green">2 <i class="fas fa-fire-alt"></i></span></span><script>const streakFirstAnswered=new Date('Wed Aug 26 2020 16:01:15 GMT+0100 (British Summer Time)');const streakLastAnswered=new Date('Thu Aug 27 2020 12:54:48 GMT+0100 (British Summer Time)');setSidebarStreaks(streakFirstAnswered,streakLastAnswered);</script></div><div class="vpn-stats">Online: <span id="all-online-no" class="hacker-green">3670 Users</span></div></li><li class="nav-item indent-item "><a class="nav-link" href="https://tryhackme.com/"><i class="far fa-portal-enter sidebar-nav-icon"></i> Dashboard</a></li><li class="nav-item indent-item "><a class="nav-link" href="https://tryhackme.com/rooms"><i class="far fa-door-closed sidebar-nav-icon"></i> My Rooms</a></li><li class="sidebar-title notli">Learn</li><li class="nav-item indent-item "><a class="nav-link" href="https://tryhackme.com/hacktivities"><i class="far fa-door-open sidebar-nav-icon"></i> Hacktivities</a></li><li class="nav-item indent-item "><a class="nav-link" href="https://tryhackme.com/paths"><i class="fal fa-shoe-prints sidebar-nav-icon"></i> Learning Paths</a></li><li data-toggle="collapse" data-target="#networks" class="droppable nav-item indent-item"><a href="#" class="nav-link preventDefault"><i class="fal fa-network-wired sidebar-nav-icon"></i> Networks<span class="nav-icon-dropdown"><i class="far fa-chevron-down size-12" aria-hidden="true"></i></span></a></li><ul class="nav nav-list nav-droppable collapse ml-2" id="networks"><li class="nav-item indent-item"><a class="nav-link" href="https://tryhackme.com/network/throwback">Throwback</a></li></ul><li class="sidebar-title notli mt-3">Compete</li><li class="nav-item indent-item "><a class="nav-link" href="https://tryhackme.com/leaderboards"><i class="fal fa-trophy sidebar-nav-icon"></i> Leaderboards</a></li><li class="nav-item indent-item "><a class="nav-link" href="https://tryhackme.com/games/koth"><i class="fal fa-crown sidebar-nav-icon"></i> King of the Hill</a></li><li class="sidebar-title notli mt-3">More</li><li data-toggle="collapse" data-target="#access-machines" class="droppable nav-item indent-item"><a href="#" class="nav-link preventDefault"><i class="fal fa-key sidebar-nav-icon"></i> Access Machines<span class="nav-icon-dropdown"><i class="far fa-chevron-down size-12" aria-hidden="true"></i></span></a></li><ul class="nav nav-list nav-droppable collapse ml-2" id="access-machines"><li class="nav-item indent-item"><a class="nav-link" href="https://tryhackme.com/access">OpenVPN</a></li><li class="nav-item indent-item"><a class="nav-link" href="https://tryhackme.com/my-machine">My Machine</a></li></ul><li data-toggle="collapse" data-target="#other" class="droppable nav-item indent-item"><a href="#" class="nav-link preventDefault">Other<span class="nav-icon-dropdown"><i class="far fa-chevron-down size-12" aria-hidden="true"></i></span></a></li><ul class="nav nav-list nav-droppable collapse ml-2" id="other"><li class="nav-item indent-item"><a class="nav-link" href="https://tryhackme.com/docs"><i class="fas fa-book sidebar-drop-icon"></i> Docs</a></li><li class="nav-item indent-item"><a class="nav-link" href="https://tryhackme.com/subscriptions"><i class="far fa-tag sidebar-drop-icon"></i> Buy Vouchers</a></li><li class="nav-item indent-item"><a class="nav-link" href="https://tryhackme.com/develop-rooms"><i class="fas fa-hashtag sidebar-drop-icon"></i> Develop Rooms</a></li></ul><li data-toggle="collapse" data-target="#socials" class="droppable nav-item indent-item"><a href="#" class="nav-link preventDefault">Socials<span class="nav-icon-dropdown"><i class="far fa-chevron-down size-12" aria-hidden="true"></i></span></a></li><ul class="nav nav-list nav-droppable collapse ml-2" id="socials"><li class="nav-item indent-item"><a class="nav-link" target="_blank" href="https://discord.gg/F7ERYzz"><i class="fab fa-discord sidebar-drop-icon"></i> Discord</a></li><li class="nav-item indent-item"><a class="nav-link" href="https://tryhackme.com/forum"><i class="fas fa-comment-alt-edit sidebar-drop-icon"></i> Forum</a></li><li class="nav-item indent-item"><a class="nav-link" target="_blank" href="https://twitter.com/RealTryHackMe"><i class="fab fa-twitter sidebar-text-color sidebar-drop-icon"></i> Twitter</a></li><li class="nav-item indent-item"><a class="nav-link" target="_blank" href="https://www.linkedin.com/company/tryhackme/"><i class="fab fa-linkedin sidebar-drop-icon"></i> LinkedIn</a></li><li class="nav-item indent-item"><a class="nav-link" href="https://tryhackme.com/messages"><i class="fas fa-comment-lines sidebar-drop-icon"></i> Messages</a></li></ul></ul></div><script src="TryHackMe%20|%20Web%20Fundamentals_files/moto.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/highcharts.js"></script><link href="TryHackMe%20|%20Web%20Fundamentals_files/scoreboard.css" rel="stylesheet" type="text/css"><link href="TryHackMe%20|%20Web%20Fundamentals_files/introjs.css" rel="stylesheet" type="text/css"><link href="TryHackMe%20|%20Web%20Fundamentals_files/introjsdark.css" rel="stylesheet" type="text/css"><link href="TryHackMe%20|%20Web%20Fundamentals_files/slideout.css" rel="stylesheet" type="text/css">
+<div id="room-banner" class="shadow-light">
+<img id="room-image-large" src="TryHackMe%20|%20Web%20Fundamentals_files/bWYaSN0.png" style="display: block;">
+<div id="room-banner-stats">
+<div class="creators"></div>
+<div class="numbers"></div>
+</div>
+</div>
+<div class="container main pb"><div class="page-header">
+<div class="room-header">
+<div id="room-voting" class="text-center vertical-align-custom">
+<div class="voting-buttons">
+<i class="fas fa-arrow-up display-block" onclick="makeVote(true)" id="vote-up" style="color: rgb(52, 60, 66);"></i>
+<div class="display-block" id="vote-number">418</div>
+<i class="fas fa-arrow-down display-block" onclick="makeVote(false)" id="vote-down" style="color: rgb(52, 60, 66);"></i>
+</div>
+</div>
+<div class="vertical-align-custom">
+<div id="logo"><img class="room-avatar" src="TryHackMe%20|%20Web%20Fundamentals_files/c969a5ba19bfe2a3da8000e7db4a03bb.png" onerror="replaceImg(this)"></div>
+</div>
+<div class="vertical-align-custom">
+<div id="room-basic-data">
+<div class="d-flex justify-content-between">
+<h1 id="title" class="bold-head">Web Fundamentals</h1>
+<div id="room-title-options">
+<span id="awards-model-btn" data-toggle="modal" data-target="#award-modal" class="badge badge-warning ml-1 noselect" style="display: inline-block;"><i class="fas fa-award"></i> Awards</span>
+
+<span id="room-faq-slideout" type="button" class="badge badge-info ml-1 noselect d-inline-block" data-toggle="modal" data-target="#roomSlideoutFAQ">
+Help
+</span>
+<div class="btn-group dropright room-dropright noselect ml-1" id="room-options" style="display: inline-block;">
+<span class="badge badge-success" data-toggle="dropdown">
+Options <i class="ml-2 size-14 fas fa-caret-right"></i>
+</span>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tryhackme.com/api/clone/webfundamentals" id="clone-room" style="display: none;"><i class="far fa-clone"></i> Clone Room</a>
+<a class="dropdown-item preventDefault" href="#" id="known-issues"><i class="far fa-exclamation-triangle"></i> Known Issues</a>
+<a class="dropdown-item preventDefault" href="#" id="writeups-simple" style="display: inline-block;"><i class="fas fa-pen-alt"></i> Writeups</a>
+<a class="dropdown-item" href="#" id="leave-room"><i class="fas fa-sign-out-alt"></i> Leave</a>
+</div>
+</div>
+</div>
+</div>
+<p class="mb0" id="description">Learn how the web works!</p>
+</div>
+</div>
+</div>
+</div>
+<hr class="hr-fade">
+<div id="room-message"></div><section id="sponsor">
+<i id="sponsor-close" class="fas fa-times"></i>
+<div id="sponsor-data"></div>
+</section>
+<div id="top-panel"><ul class="nav nav-tabs" id="task-navs">
+<li class="nav-item">
+<a class="nav-link  active " data-toggle="tab" href="#chart">
+<i class="fas fa-chart-line icon-right"></i> Chart
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" data-toggle="tab" href="#scoreboard">
+<i class="fas fa-trophy icon-right"></i> Scoreboard
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" data-toggle="tab" href="#chat">
+<i class="fas fa-comments-alt icon-right chat-icon"></i> Discuss
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" data-toggle="tab" href="#writeups">
+<i class="fas fa-pen-alt icon-right"></i> Writeups
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" data-toggle="tab" href="#about">
+<i class="fas fa-info-circle icon-right"></i> More
+</a>
+</li>
+</ul>
+<div class="card nav-above-con" id="room-main">
+<div class="card-body">
+<span id="room-tabs">
+<div class="tab-content">
+<div id="chart" class="tab-pane  active ">
+<span id="difficulty-bar"><div class="room-progress-bar"><div class="progress" id="room-progress-2" data-toggle="tooltip" data-html="true" title="" data-original-title="Rated Easy">            <div class="progress-bar bg-success" role="progressbar" style="width: 20%;" aria-valuemin="0" aria-valuemax="100"></div>          </div><div class="diff-text">Difficulty:</div></div></span>
+<br><div id="chart-data"></div>
+</div>
+<div id="scoreboard" class="tab-pane fade">
+<table class="table table-striped table-bordered table-condensed table-header-rotated mb-0" id="scoreboard_table">
+<thead>
+<tr id="scoreboard_header">
+<th>Rank</th>
+<th>Username</th>
+<th>Total Score</th>
+</tr>
+</thead>
+<tbody id="scoreboard_body"></tbody>
+</table>
+</div>
+<div id="chat" class="tab-pane fade">
+
+<div class="row">
+<div class="col-sm-6 text-center">
+<h3 class="mb-2">Discord</h3>
+<p>Come join our <a target="_blank" href="https://discord.gg/QgC6Tdk">Discord</a> server for support or further discussions</p>
+</div>
+<div class="col-sm-6 text-center">
+<h3 class="mb-2">Forum</h3>
+<div id="forum-text">Search our <a href="https://tryhackme.com/forum">forum</a> for pre-existing threads about this room, or create your own!</div>
+</div>
+</div>
+</div>
+<div id="writeups" class="tab-pane text-center">
+<div id="writeups-data"> <a target="_blank" href="https://medium.com/@papadopejk/web-fundamentals-tryhackme-494c54ebc466?sk=c10c7b1d1aba8d64356f032d11b26d33">Web Fundamentals - The Terminal Way</a>
+                    by <img class="user-avatar-writeup" src="TryHackMe%20|%20Web%20Fundamentals_files/caf832423acb4f50baae0db4346fbe8a.jpg"> <a class="nocss" href="https://tryhackme.com/p/papadopejk">papadopejk</a><br></div>
+<button onclick="showWriteupForm(this)" type="button" class="btn btn-xs btn-secondary mt-3 mb-2">Add Writeup</button>
+<div id="writeup-form">
+<div class="form-row">
+<div class="col-auto">
+<input type="text" class="form-control mb-2" id="writeup-title" placeholder="Writeup Title">
+</div>
+<div class="col-auto">
+<input type="text" class="form-control mb-2" id="writeup-link" placeholder="Writeup URL">
+</div>
+<div class="col-auto">
+<button id="submit-writeup" type="submit" class="btn btn-success mb-2">Submit</button>
+</div>
+</div>
+<p class="faded mb-0 size-14"><i class="fas fa-exclamation-triangle text-warning"></i> Writeups should have a link to TryHackMe and not include any passwords/cracked hashes/flags</p>
+</div>
+</div>
+<div id="about" class="tab-pane text-center">
+<p id="about-freeRoom">Only subscribers can deploy virtual machines in this room! Go to your <a href="https://tryhackme.com/profile">profile</a> page to subscribe (if you have not already). </p>
+<p id="about-owner"><a class="display-inline clearfix custom-card pointer-link nocss nounderline" href="https://tryhackme.com/p/NinjaJc01">                    <div class="card room-card-small no-border noselect vertical-align-custom">                      <div class="card-body">                        <img class="avatar-leaderboards" src="TryHackMe%20|%20Web%20Fundamentals_files/cf93edf679b697f43dcf051dba26462d.jpg">                        Created by <span class="text-accent mb-0">NinjaJc01</span>                      </div>                    </div>                  </a></p>
+
+<a href="https://tryhackme.com/room/kali" target="_blank">
+<img src="TryHackMe%20|%20Web%20Fundamentals_files/g6w7sen.png" id="kali-room-ad">
+
+</a>
+<p class="mt-2">Control the machine via your browser, SSH or RDP</p>
+</div>
+</div>
+</span>
+</div>
+</div>
+</div><div id="room-simple-video" class="card card-body"></div><div class="card mt-3" id="task-list">
+<div class="card-body">
+<h2 id="task-list-label" class="mb">
+<i class="fad fa-tasks"></i> Tasks
+<span id="room-type" aria-hidden="true" data-toggle="tooltip" data-html="true" class="very-small float-right" data-original-title="Only subscribers can deploy virtual machines in this room">(Subscription Only Room)</span>
+</h2>
+<div class="card mb shadow-light text-center" id="instance-info">
+<div class="card-header card-header-red">Active Machine Information</div>
+<div class="card-body">
+<div class="row vertical-align-custom">
+<div class="col-sm-3">
+<i>Loading...</i>
+</div>
+<div class="col-sm-3" id="table-machine-ip">
+<i>Loading...</i>
+</div>
+<div class="col-sm-3">
+<i>Loading...</i>
+</div>
+<div class="col-sm-3">
+<i>Loading...</i>
+</div>
+</div>
+</div>
+</div>
+<div id="accordion"><span id="progress-bar"><div class="progress mb">          <div class="progress-bar bg-secondary" role="progressbar" style="width: 7%; aria-valuemin=" 0"="" aria-valuemax="100"> 7%</div>        </div></span><div class="card mb task-complete" id="1">                            <div class="card-header task-header collapsed" data-toggle="collapse" href="#collapse1" aria-expanded="false">                              <a class="card-link">                                <span class="hacker-green">[Task 1]</span> Introduction and objectives                                <span class="float-right"><i class="fas fa-angle-down"></i></span>                                <span class="task-resources"></span>                              </a>                            </div>                            <div id="collapse1" class="collapse" data-parent="#accordion" style="">                              <div class="card-body">                                <p>This room is designed as a basic intro to how the web works.</p><p>We'll
+ cover HTTP requests and responses, web servers, cookies and then put 
+them all to use in a mini Capture the Flag at the end.</p><hr class="hr-faded">                                <h5 class="mt">
+                                  <table>
+                                    <tbody><tr>
+                                      <td class="task-badge">
+                                        <span class="badge badge-secondary">#1</span>
+                                        
+                                      </td>
+                                      <td class="task-row-question">
+                                        <span class="task-questions"><p>Read and understand the information</p></span>
+                                      </td>
+                                    </tr>
+                                  </tbody></table>
+                                </h5>
+                                <div class="row task-question">
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control room-answer-field" placeholder="No answer needed" disabled="disabled">
+                                    <input type="hidden" value="1">
+                                    <input type="hidden" value="1">
+                                  </div>
+                                  <div class="col-sm pl-0">
+                                    <button type="button" class="btn btn-success task-answer" onclick="answerQuestion(this)" disabled="disabled">Correct Answer</button>
+                                  </div></div>                              </div>                            </div>                          </div><div class="card mb task-incomplete" id="2">                            <div class="card-header task-header" data-toggle="collapse" href="#collapse2" aria-expanded="true">                              <a class="card-link">                                <span class="red">[Task 2]</span> How do we load websites?                                <span class="float-right"><i class="fas fa-angle-down"></i></span>                                <span class="task-resources"></span>                              </a>                            </div>                            <div id="collapse2" class="collapse show" data-parent="#accordion" style="">                              <div class="card-body">                                <p><b><u><span style="font-size:18px;">Finding the server</span></u></b></p><p>Initially,
+ a DNS request is made. DNS is like a giant phone book that takes a URL 
+(Like https://tryhackme.com/) and turns it into an IP address. This 
+means that people don’t have to remember IP addresses for their 
+favourite websites. </p><p>The IP address uniquely identifies each 
+internet connected device, like a web server or your computer. These are
+ formed of 4 groups of numbers, each 0-255 (x.x.x.x) and called an 
+octet. An example shown below is 100.70.172.11.</p><p><b><u><span style="font-size:18px;">Loading some content</span></u></b></p><p>Once
+ the browser knows the server's IP address, it can ask the server for 
+the web page. This is done with a HTTP GET request. GET is an example of
+ a HTTP verb, which are the different types of request (More on these 
+later). The server will respond to the GET request with the web page 
+content. If the web page is loading extra resources, like JavaScript, 
+images, or CSS files, those will be retrieved in separate GET requests.</p><img src="TryHackMe%20|%20Web%20Fundamentals_files/R04qcso.png"><p>Wireshark showing the HTTP requests that load a website (neverssl.com)</p><p>For
+ most websites now, these requests will use HTTPS. HTTPS is a secure 
+(encrypted) version of HTTP, it works in more or less the same way. This
+ uses TLS 1.3 (normally) encryption in order to communicate without:</p><ul><li>Other parties being able to read the data</li><li>Other parties being able to modify the data</li></ul><p>Imagine if someone could modify a request to your bank to send money to your friend. That'd be disastrous!</p><p>A
+ web server is software that receives and responds to HTTP(S) requests. 
+Popular examples are Apache, Nginx and Microsoft's IIS. By default, HTTP
+ runs on port 80 and HTTPS runs on port 443. Many CTFs are based around 
+websites, so it's useful to know that if port 80 is open, there's likely
+ a web server listening that you can attack and exploit.</p><p>The actual content of the web page is normally a combination of <b>HTML</b>, <b>CSS</b> and <b>JavaScript</b>.
+ HTML defines the structure of the page, and the content. CSS allows you
+ to change how the page looks and make it look fancy. JavaScript is a 
+programming language that runs in the browser and allows you to make 
+pages interactive or load extra content.</p><hr class="hr-faded">                                <h5 class="mt">
+                                  <table>
+                                    <tbody><tr>
+                                      <td class="task-badge">
+                                        <span class="badge badge-secondary">#1</span>
+                                        
+                                      </td>
+                                      <td class="task-row-question">
+                                        <span class="task-questions"><p>What request verb is used to retrieve page content?</p></span>
+                                      </td>
+                                    </tr>
+                                  </tbody></table>
+                                </h5>
+                                <div class="row task-question">
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control room-answer-field" placeholder="Answer format: ***">
+                                    <input type="hidden" value="1">
+                                    <input type="hidden" value="2">
+                                  </div>
+                                  <div class="col-sm pl-0">
+                                    <button type="button" class="btn btn-outline-success task-answer" onclick="answerQuestion(this)">                                      <i class="far fa-paper-plane"></i> Submit                                    </button>
+                                  </div></div><h5 class="mt">
+                                  <table>
+                                    <tbody><tr>
+                                      <td class="task-badge">
+                                        <span class="badge badge-secondary">#2</span>
+                                        
+                                      </td>
+                                      <td class="task-row-question">
+                                        <span class="task-questions"><p>What port do web servers normally listen on?</p></span>
+                                      </td>
+                                    </tr>
+                                  </tbody></table>
+                                </h5>
+                                <div class="row task-question">
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control room-answer-field" placeholder="Answer format: **">
+                                    <input type="hidden" value="2">
+                                    <input type="hidden" value="2">
+                                  </div>
+                                  <div class="col-sm pl-0">
+                                    <button type="button" class="btn btn-outline-success task-answer" onclick="answerQuestion(this)">                                      <i class="far fa-paper-plane"></i> Submit                                    </button>
+                                  </div></div><h5 class="mt">
+                                  <table>
+                                    <tbody><tr>
+                                      <td class="task-badge">
+                                        <span class="badge badge-secondary">#3</span>
+                                        
+                                      </td>
+                                      <td class="task-row-question">
+                                        <span class="task-questions"><p>What's responsible for making websites look fancy?</p></span>
+                                      </td>
+                                    </tr>
+                                  </tbody></table>
+                                </h5>
+                                <div class="row task-question">
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control room-answer-field" placeholder="Answer format: ***">
+                                    <input type="hidden" value="3">
+                                    <input type="hidden" value="2">
+                                  </div>
+                                  <div class="col-sm pl-0">
+                                    <button type="button" class="btn btn-outline-success task-answer" onclick="answerQuestion(this)">                                      <i class="far fa-paper-plane"></i> Submit                                    </button>
+                                  </div></div>                              </div>                            </div>                          </div><div class="card mb task-incomplete" id="3">                            <div class="card-header task-header" data-toggle="collapse" href="#collapse3">                              <a class="card-link">                                <span class="red">[Task 3]</span> More HTTP - Verbs and request formats                                <span class="float-right"><i class="fas fa-angle-down"></i></span>                                <span class="task-resources"></span>                              </a>                            </div>                            <div id="collapse3" class="collapse " data-parent="#accordion">                              <div class="card-body">                                <p><b><u><span style="font-size:18px;">Requests</span></u></b></p><p>There
+ are 9 different HTTP "verbs", also known as methods. Each one has a 
+different function. We've mentioned GET requests already, these are used
+ to retrieve content. </p><p>POST requests are used to send data to a web server, like adding a comment or performing a login.</p><p>There are several more verbs, but these aren't as commonly used for most web servers.</p><p>A HTTP request can be broken down into parts. The first line is a verb and a path for the server, such as</p><pre>GET /index.html</pre><p>The
+ next section is headers, which give the web server more information 
+about your request. Importantly, cookies are sent in the request 
+headers, more on those later.</p><p>Finally, body of the request. For 
+POST requests, this is the content that's sent to the server. For GET 
+requests, a body is allowed but will mostly be ignored by the server.</p><p>Here's an example for a GET request retrieving a simple JS file:</p><pre>GET /main.js HTTP/1.1
+Host: 192.168.170.129:8081
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
+Accept: */*
+Referer: http://192.168.170.129:8081/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8</pre><p>From the headers, 
+you can tell what I performed the request from (Chrome version 80, from 
+Windows 10). This is useful for forensics and analysing packet captures.</p><b><u><span style="font-size:18px;">Responses</span></u></b><p></p><p><span style="font-size:16px;">﻿The
+ server should reply with a response. The response follows a similar 
+structure to the request, but the first line describes the status rather
+ than a verb and a path.<br>The status will normally be a code, you're probably already familiar with 404: Not found.</span></p><p><span style="font-size:16px;">A basic breakdown of the status codes is:</span></p><ul><li><span style="font-size:1rem;">100-199: Information</span></li><li><span style="font-size:1rem;">200-299: Successes (200 OK is the "normal" response for a GET)</span></li><li>300-399: Redirects (the information you want is elsewhere)</li><li>400-499: Client errors (You did something wrong, like asking for something that doesn't exist)</li><li>500-599: Server errors (The server tried, but something went wrong on their side)</li></ul><p>You can find more information about these here:&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">https://developer.mozilla.org/en-US/docs/Web/HTTP/Status</a></p><p>Response
+ headers can be very important. They can often tell you something about 
+the web server sending them, or give you cookies that may prove useful 
+later on.</p><p>The response will also have a body. For GET requests, 
+this is normally web content or information such as JSON. For POST 
+requests, it may be a status message or similar.</p><p>Here's a response to the GET request shown above:</p>
+<pre>HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Content-Length: 28
+Content-Type: application/javascript; charset=utf-8
+Last-Modified: Wed, 12 Feb 2020 12:51:44 GMT
+Date: Thu, 27 Feb 2020 21:47:30 GMT
+
+console.log("Hello, World!")</pre><hr class="hr-faded">                                <h5 class="mt">
+                                  <table>
+                                    <tbody><tr>
+                                      <td class="task-badge">
+                                        <span class="badge badge-secondary">#1</span>
+                                        
+                                      </td>
+                                      <td class="task-row-question">
+                                        <span class="task-questions"><p>What verb would be used for a login?</p></span>
+                                      </td>
+                                    </tr>
+                                  </tbody></table>
+                                </h5>
+                                <div class="row task-question">
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control room-answer-field" placeholder="Answer format: ****">
+                                    <input type="hidden" value="1">
+                                    <input type="hidden" value="3">
+                                  </div>
+                                  <div class="col-sm pl-0">
+                                    <button type="button" class="btn btn-outline-success task-answer" onclick="answerQuestion(this)">                                      <i class="far fa-paper-plane"></i> Submit                                    </button>
+                                  </div></div><h5 class="mt">
+                                  <table>
+                                    <tbody><tr>
+                                      <td class="task-badge">
+                                        <span class="badge badge-secondary">#2</span>
+                                        
+                                      </td>
+                                      <td class="task-row-question">
+                                        <span class="task-questions"><p>What verb would be used to see your bank balance once you're logged in?</p></span>
+                                      </td>
+                                    </tr>
+                                  </tbody></table>
+                                </h5>
+                                <div class="row task-question">
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control room-answer-field" placeholder="Answer format: ***">
+                                    <input type="hidden" value="2">
+                                    <input type="hidden" value="3">
+                                  </div>
+                                  <div class="col-sm pl-0">
+                                    <button type="button" class="btn btn-outline-success task-answer" onclick="answerQuestion(this)">                                      <i class="far fa-paper-plane"></i> Submit                                    </button>
+                                  </div></div><h5 class="mt">
+                                  <table>
+                                    <tbody><tr>
+                                      <td class="task-badge">
+                                        <span class="badge badge-secondary">#3</span>
+                                        
+                                      </td>
+                                      <td class="task-row-question">
+                                        <span class="task-questions"><p>Does the body of a GET request matter? Yea/Nay</p></span>
+                                      </td>
+                                    </tr>
+                                  </tbody></table>
+                                </h5>
+                                <div class="row task-question">
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control room-answer-field" placeholder="Answer format: ***">
+                                    <input type="hidden" value="3">
+                                    <input type="hidden" value="3">
+                                  </div>
+                                  <div class="col-sm pl-0">
+                                    <button type="button" class="btn btn-outline-success task-answer" onclick="answerQuestion(this)">                                      <i class="far fa-paper-plane"></i> Submit                                    </button>
+                                  </div></div><h5 class="mt">
+                                  <table>
+                                    <tbody><tr>
+                                      <td class="task-badge">
+                                        <span class="badge badge-secondary">#4</span>
+                                        
+                                      </td>
+                                      <td class="task-row-question">
+                                        <span class="task-questions"><p>What's the status code for "I'm a teapot"?</p></span>
+                                      </td>
+                                    </tr>
+                                  </tbody></table>
+                                </h5>
+                                <div class="row task-question">
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control room-answer-field" placeholder="Answer format: ***">
+                                    <input type="hidden" value="4">
+                                    <input type="hidden" value="3">
+                                  </div>
+                                  <div class="col-sm pl-0">
+                                    <button type="button" class="btn btn-outline-success task-answer" onclick="answerQuestion(this)">                                      <i class="far fa-paper-plane"></i> Submit                                    </button>
+                                  </div><div class="col-sm task-hint">
+                                    <button type="button" class="btn btn-outline-warning task-hint" onclick="getHint(this)">
+                        <i class="fas fa-shoe-prints"></i> Hint
+                      </button>
+                                  </div></div><h5 class="mt">
+                                  <table>
+                                    <tbody><tr>
+                                      <td class="task-badge">
+                                        <span class="badge badge-secondary">#5</span>
+                                        
+                                      </td>
+                                      <td class="task-row-question">
+                                        <span class="task-questions"><p>What status code will you get if you need to authenticate to access some content, and you're unauthenticated?</p></span>
+                                      </td>
+                                    </tr>
+                                  </tbody></table>
+                                </h5>
+                                <div class="row task-question">
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control room-answer-field" placeholder="Answer format: ***">
+                                    <input type="hidden" value="5">
+                                    <input type="hidden" value="3">
+                                  </div>
+                                  <div class="col-sm pl-0">
+                                    <button type="button" class="btn btn-outline-success task-answer" onclick="answerQuestion(this)">                                      <i class="far fa-paper-plane"></i> Submit                                    </button>
+                                  </div></div>                              </div>                            </div>                          </div><div class="card mb task-incomplete" id="4">                            <div class="card-header task-header" data-toggle="collapse" href="#collapse4">                              <a class="card-link">                                <span class="red">[Task 4]</span> Cookies, tasty!                                <span class="float-right"><i class="fas fa-angle-down"></i></span>                                <span class="task-resources"></span>                              </a>                            </div>                            <div id="collapse4" class="collapse " data-parent="#accordion">                              <div class="card-body">                                <p><b><u><span style="font-size:18px;">What are cookies?</span></u></b></p><p>Cookies are small bits of data that are stored in your browser. <b>Each browser will store them separately, so cookies in Chrome won't be available in Firefox.</b>
+ They have a huge number of uses, but the most common are either session
+ management or advertising (tracking cookies). Cookies are normally sent
+ with every HTTP request made to a server.</p><p><b><u><span style="font-size:18px;">Why Cookies?</span></u></b>
+<br></p><p>Because HTTP is stateless (Each request is independent and no
+ state is tracked internally), cookies are used to keep track of this. 
+They allow sites to keep track of data like what items you have in your 
+shopping cart, who you are, what you've done on the website and more.</p><p>Cookies
+ can be broken down into several parts. Cookies have a name, a value, an
+ expiry date and a path. The name identifies the cookie, the value is 
+where data is stored, the expiry date is when the browser will get rid 
+of the cookie automatically and the path determines what requests the 
+cookie will be sent with. Cookies are normally only sent with requests 
+to the site that set them (Weird things happen with 
+advertising/tracking).</p><p>The server is normally what sets cookies, 
+and these come in the response headers ("Set-Cookie"). Alternatively, 
+these can be set from JavaScript inside your browser.</p><p><b><u><span style="font-size:18px;">Using cookies</span></u></b></p><p>When
+ you log in to a web application, normally you are given a Session 
+Token. This allows the web server to identify your requests from someone
+ else's. Stealing someone else's session token can often allow you to 
+impersonate them.</p><p><b><u><span style="font-size:18px;">Manipulating cookies</span></u></b></p><p>Using
+ your browser's developer tools, you can view and modify cookies. In 
+Firefox, you can open the dev tools with F12. In the Storage tab, you 
+can see cookies that the website has set. There's also a "+" button to 
+allow you to create your own cookies which will come in handy in a 
+minute. You can modify all cookies that you can see in this panel, as 
+well as adding more.</p><p><b><u><span style="font-size:18px;">Alternatives - useful to know</span></u></b></p><p>Slowly,
+ for some uses, LocalStorage and SessionStorage are used instead. This 
+has a similar functionality but isn't sent with HTTP requests by 
+default. These are HTML5 features.</p><p><b><u><span style="font-size:18px;">More on cookies</span></u></b></p><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies">https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies</a><br></p><hr class="hr-faded">                                <h5 class="mt">
+                                  <table>
+                                    <tbody><tr>
+                                      <td class="task-badge">
+                                        <span class="badge badge-secondary">#1</span>
+                                        
+                                      </td>
+                                      <td class="task-row-question">
+                                        <span class="task-questions"><p>Read and try and understand this information. Check out the link for extra information</p></span>
+                                      </td>
+                                    </tr>
+                                  </tbody></table>
+                                </h5>
+                                <div class="row task-question">
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control room-answer-field" placeholder="No answer needed" disabled="disabled">
+                                    <input type="hidden" value="1">
+                                    <input type="hidden" value="4">
+                                  </div>
+                                  <div class="col-sm pl-0">
+                                    <button type="button" class="btn btn-outline-success task-answer" onclick="answerQuestion(this)">                                    <i class="far fa-paper-plane"></i> Completed                                  </button>
+                                  </div></div>                              </div>                            </div>                          </div><div class="card mb task-incomplete" id="5">                            <div class="card-header task-header" data-toggle="collapse" href="#collapse5">                              <a class="card-link">                                <span class="red">[Task 5]</span> Mini CTF                                <span class="float-right"><i class="fas fa-angle-down"></i></span>                                <span class="task-resources"><i class="far fa-server text-lgreen" data-toggle="tooltip" data-placement="left" title="" data-original-title="Task includes a deployable machine"></i></span>                              </a>                            </div>                            <div id="collapse5" class="collapse " data-parent="#accordion">                              <div class="card-body">                                <div class="row">                        	          <div class="col-sm-10">                                      <p>Time to put what you've learnt to use!</p><p><b><u><span style="font-size:18px;">Making HTTP requests</span></u></b></p><p>You
+ can make HTTP requests in many ways, including without browsers! For 
+CTFs, you'll sometimes need to use cURL or a programming language as 
+this allows you to automate repetitive tasks.</p><p><b><u><span style="font-size:18px;">Intro to cURL</span></u></b></p><p>By default, cURL will perform GET requests on whatever URL you supply it, such as:</p><pre>curl <a href="https://tryhackme.com/">https://tryhackme.com</a></pre><p>This
+ would retrieve the main page for tryhackme with a GET request. Using 
+command line flags for cURL, we can do a lot more than just GET content.
+ The -X flag allows us to specify the request type, eg -X POST. You can 
+specify the data to POST with --data, which will default to plain text 
+data. It's worth mentioning cURL does not store cookies, and you have to
+ manually specify any cookies and values that you would like to send 
+with your request. If you want to send cookies from cURL, you can look 
+up how to do this.</p><p>Remember, cookies are not shared between different browsers (I'm counting cURL as a browser here).</p><p><b><u><span style="font-size:18px;">Tasks</span></u></b></p><p><span style="font-size:16px;">There's a web server running on http://MACHINE_IP:8081. Connect to it and get the flags!</span></p><ul><li>GET request. Make a GET request to the web server with path&nbsp;<span style="font-size:1rem;">/ctf/get</span></li><li>POST request. Make a POST request with the body "flag_please" to /ctf/post</li><li>Get a cookie. Make a GET request to&nbsp;<span style="font-size:1rem;">/ctf/getcookie</span><span style="font-size:1rem;">&nbsp;and check the cookie the server gives you</span></li><li>Set a cookie. Set a cookie with name "flagpls" and value "flagpls" in your devtools and make a GET request to&nbsp;<span style="font-size:1rem;">/ctf/sendcookie</span></li></ul>                        	          </div>                        	          <div class="col-sm-2 text-center" style="margin: 0; padding: 0; overflow: hidden;">                        	            <button type="submit" class="btn btn-success" value="5e57d49801090e411bdd3001" onclick="deploy(this)"><i class="fas fa-cloud"></i> Deploy</button>                                                              	          </div>                        	        </div><hr class="hr-faded">                                <h5 class="mt">
+                                  <table>
+                                    <tbody><tr>
+                                      <td class="task-badge">
+                                        <span class="badge badge-secondary">#1</span>
+                                        
+                                      </td>
+                                      <td class="task-row-question">
+                                        <span class="task-questions"><p>What's the GET flag?</p></span>
+                                      </td>
+                                    </tr>
+                                  </tbody></table>
+                                </h5>
+                                <div class="row task-question">
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control room-answer-field" placeholder="Answer format: ***{********************************}">
+                                    <input type="hidden" value="1">
+                                    <input type="hidden" value="5">
+                                  </div>
+                                  <div class="col-sm pl-0">
+                                    <button type="button" class="btn btn-outline-success task-answer" onclick="answerQuestion(this)">                                      <i class="far fa-paper-plane"></i> Submit                                    </button>
+                                  </div><div class="col-sm task-hint">
+                                    <button type="button" class="btn btn-outline-warning task-hint" onclick="getHint(this)">
+                        <i class="fas fa-shoe-prints"></i> Hint
+                      </button>
+                                  </div></div><h5 class="mt">
+                                  <table>
+                                    <tbody><tr>
+                                      <td class="task-badge">
+                                        <span class="badge badge-secondary">#2</span>
+                                        
+                                      </td>
+                                      <td class="task-row-question">
+                                        <span class="task-questions"><p>What's the POST flag?</p></span>
+                                      </td>
+                                    </tr>
+                                  </tbody></table>
+                                </h5>
+                                <div class="row task-question">
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control room-answer-field" placeholder="Answer format: ***{********************************}">
+                                    <input type="hidden" value="2">
+                                    <input type="hidden" value="5">
+                                  </div>
+                                  <div class="col-sm pl-0">
+                                    <button type="button" class="btn btn-outline-success task-answer" onclick="answerQuestion(this)">                                      <i class="far fa-paper-plane"></i> Submit                                    </button>
+                                  </div><div class="col-sm task-hint">
+                                    <button type="button" class="btn btn-outline-warning task-hint" onclick="getHint(this)">
+                        <i class="fas fa-shoe-prints"></i> Hint
+                      </button>
+                                  </div></div><h5 class="mt">
+                                  <table>
+                                    <tbody><tr>
+                                      <td class="task-badge">
+                                        <span class="badge badge-secondary">#3</span>
+                                        
+                                      </td>
+                                      <td class="task-row-question">
+                                        <span class="task-questions"><p>What's the "Get a cookie" flag?</p></span>
+                                      </td>
+                                    </tr>
+                                  </tbody></table>
+                                </h5>
+                                <div class="row task-question">
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control room-answer-field" placeholder="Answer format: ***{********************************}">
+                                    <input type="hidden" value="3">
+                                    <input type="hidden" value="5">
+                                  </div>
+                                  <div class="col-sm pl-0">
+                                    <button type="button" class="btn btn-outline-success task-answer" onclick="answerQuestion(this)">                                      <i class="far fa-paper-plane"></i> Submit                                    </button>
+                                  </div><div class="col-sm task-hint">
+                                    <button type="button" class="btn btn-outline-warning task-hint" onclick="getHint(this)">
+                        <i class="fas fa-shoe-prints"></i> Hint
+                      </button>
+                                  </div></div><h5 class="mt">
+                                  <table>
+                                    <tbody><tr>
+                                      <td class="task-badge">
+                                        <span class="badge badge-secondary">#4</span>
+                                        
+                                      </td>
+                                      <td class="task-row-question">
+                                        <span class="task-questions"><p>What's the "Set a cookie" flag?</p></span>
+                                      </td>
+                                    </tr>
+                                  </tbody></table>
+                                </h5>
+                                <div class="row task-question">
+                                  <div class="col-sm-8">
+                                    <input type="text" class="form-control room-answer-field" placeholder="Answer format: ***{********************************}">
+                                    <input type="hidden" value="4">
+                                    <input type="hidden" value="5">
+                                  </div>
+                                  <div class="col-sm pl-0">
+                                    <button type="button" class="btn btn-outline-success task-answer" onclick="answerQuestion(this)">                                      <i class="far fa-paper-plane"></i> Submit                                    </button>
+                                  </div><div class="col-sm task-hint">
+                                    <button type="button" class="btn btn-outline-warning task-hint" onclick="getHint(this)">
+                        <i class="fas fa-shoe-prints"></i> Hint
+                      </button>
+                                  </div></div>                              </div>                            </div>                          </div></div>
+</div>
+<div class="card-footer">
+<div class="row">
+<div class="col-sm-6">
+<span id="userNo">7020 users are in here</span>
+</div>
+<div class="col-sm-6">
+<span class="float-right" id="daysBetween">This room is 170 days old</span>
+</div>
+</div>
+</div>
+</div>
+<div id="room-simple-details"><div class="card shadow-light text-center mt-3"><div class="card-body"><a class="display-inline clearfix custom-card pointer-link nocss nounderline" href="https://tryhackme.com/p/NinjaJc01">                    <div class="card room-card-small no-border noselect vertical-align-custom">                      <div class="card-body">                        <img class="avatar-leaderboards" src="TryHackMe%20|%20Web%20Fundamentals_files/cf93edf679b697f43dcf051dba26462d.jpg">                        Created by <span class="text-accent mb-0">NinjaJc01</span>                      </div>                    </div>                  </a><p>Only subscribers can deploy virtual machines in this room! Go to your <a href="https://tryhackme.com/profile">profile</a> page to subscribe (if you have not already).</p></div></div></div><div class="modal fade" id="award-modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-body text-center">
+<h4 class="text-success">Room Awards</h4>
+<img class="noselect award-badge one" src="TryHackMe%20|%20Web%20Fundamentals_files/badge.svg" alt="Badge Art">
+<img class="noselect award-badge two" src="TryHackMe%20|%20Web%20Fundamentals_files/badge.svg" alt="Badge Art">
+<img class="noselect award-badge three" src="TryHackMe%20|%20Web%20Fundamentals_files/badge.svg" alt="Badge Art">
+<img class="noselect award-badge four" src="TryHackMe%20|%20Web%20Fundamentals_files/badge.svg" alt="Badge Art">
+<div id="award-modal-badges"><div class="noselect badge-box achieved-box text-center">                       <i class="fal fa-spider-web path-badge achieved-circle achieved-circle"></i>                       <div class="mt">                          <code class="bold" style="display: block;">Webbed</code>                          <p class="mt-badge mb0">Understands how the world wide web works</p>                       </div>                    </div></div>
+<p class="mb-0 faded">Completing this room will earn you this badge!</p>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="hint-modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title"><i class="fab fa-fort-awesome"></i> Question Hint</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<div class="modal-body"></div>
+<div class="modal-footer">
+<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">...</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<div class="modal-body text-center"></div>
+<div class="modal-footer"></div>
+</div>
+</div>
+</div>
+<link rel="stylesheet" href="TryHackMe%20|%20Web%20Fundamentals_files/modal.css">
+<div class="modal-design-green modal fade" id="roomCompleted" tabindex="-1" data-backdrop="false" role="dialog" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+<div class="modal-content">
+<div class="modal-body text-center">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<i class="small fad fa-times-circle"></i>
+</button>
+<div class="icon-box">
+<i class="fad fa-badge-check"></i>
+</div>
+<h3 class="text-accent mt-5">Congratulations</h3>
+<p class="faded mt-1">You've completed the room!</p>
+<h2 id="roomCompleted-share"></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-design-green modal fade" id="expireSoon" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+<div class="modal-content">
+<div class="modal-body text-center">
+<h1><i class="text-warning fad fa-exclamation-triangle"></i></h1>
+<h3 class="text-warning">Expiring Soon</h3>
+<p class="faded mt-3 mb-0">Your machine is going to expire soon. Close this and add an hour to stop it from terminating!</p>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-design-green modal fade" id="terminatedMachine" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+<div class="modal-content">
+<div class="modal-body text-center">
+<h1><i class="text-danger fad fa-exclamation-triangle"></i></h1>
+<h3 class="text-danger">Expired Machine</h3>
+<p class="faded mt-3 mb-0">Your machine has expired and terminated.</p>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-design-green modal fade" id="machineDeployModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header modal-dark-blue text-center p-3">
+<h4 class="mb-0 m-auto">How to access machines</h4>
+<button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<div class="modal-body text-center">
+<p class="size-18 faded">Now you've deployed your machine, to access it you need to either</p>
+<div class="row mb-0">
+<div class="col-sm-6">
+<img src="TryHackMe%20|%20Web%20Fundamentals_files/connect_openvpn_short.png">
+<p class="mt-2 mb-0 faded">Download your VPN configuration file and import it into a OpenVPN client</p>
+</div>
+<div class="col-sm-6">
+<img src="TryHackMe%20|%20Web%20Fundamentals_files/connect_kali_short.png">
+<p class="mt-2 mb-0 faded">Control a web-based machine with everything you need, all from inside your browser</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade slideout-faq" id="roomSlideoutFAQ" tabindex="-1" role="dialog">
+<div class="modal-dialog modal-dialog-slideout" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Help</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<i class="far fa-times"></i>
+</button>
+</div>
+<div class="modal-body">
+<div class="m-3">
+<div class="row mb-3 faq-quicklinks text-center vertical-align-custom">
+<div class="col-md-6">
+<a class="clear-link" href="https://tryhackme.com/access">
+<div class="card card-body">
+<div class="faq-quicklinks-title size-18">OpenVPN</div>
+<p class="faded">Connect to our network via a VPN to access deployed machines</p>
+</div>
+</a>
+</div>
+<div class="col-md-6">
+<a class="clear-link" href="https://tryhackme.com/my-machine">
+<div class="card card-body">
+<div class="faq-quicklinks-title size-18">Browser-Based</div>
+<p class="faded">Use a browser-based Kali machine to access deployed machines</p>
+</div>
+</a>
+</div>
+</div>
+<input type="text" id="slideoutSearch" onkeyup="faqSearch()" class="form-control" placeholder="What do you need help with?">
+</div>
+<div id="faqCards">
+<div class="faq-item">
+<div class="faq-title" data-toggle="collapse" href="#rfaqAccessingMachines" aria-expanded="false" aria-controls="multiCollapseExample1">
+<i class="far fa-key text-warning faq-icon"></i>
+How to access a deployed machine <i class="fas fa-angle-down float-right mr-2 ml-auto"></i>
+</div>
+<div class="collapse multi-collapse" id="rfaqAccessingMachines">
+<div class="faq-desc"><p>Some tasks will have you learning by doing, 
+often through hacking a virtual machine. However, to access these 
+machines you need to either:</p>
+<ul class="green-list mb-0">
+<li>Use the in-browser machine - If you're <a target="_blank" class="bold dotted-underline" href="https://tryhackme.com/profile#subcribe">subscribed</a>, you can deploy your <a class="bold dotted-underline" target="_blank" href="https://tryhackme.com/my-machine">in-browser</a> Kali machine and use it to access machines you've deployed!</li>
+<li class="mt-3">Use OpenVPN - You need to download your configuration file and install OpenVPN. Follow the guide <a class="bold dotted-underline" target="_blank" href="https://tryhackme.com/connect?o=vpn">here</a> to connect using OpenVPN.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-title" data-toggle="collapse" href="#rfaqNoMachineAccess" aria-expanded="false" aria-controls="multiCollapseExample1">
+<i class="far fa-key text-warning faq-icon"></i>
+Unable to access a deployed machine? <i class="fas fa-angle-down float-right mr-2 ml-auto"></i>
+</div>
+<div class="collapse multi-collapse" id="rfaqNoMachineAccess">
+<div class="faq-desc"><ul class="green-list mb-0">
+<li>Are you connected to the TryHackMe network? You can check by deploying the machine in the <a href="https://tryhackme.com/room/welcome">welcome room (task 3)</a>, waiting a few minutes and accessing its webserver - If you see a website, you are connected.</li>
+<li class="mt-3">If its a Windows machine you've deployed, it might not be pingable. Try using the -Pn flag when scanning the machine with nmap: <code class="dark">nmap MACHINE_IP -Pn -v</code></li>
+<li class="mt-3">Has the machine had long enough to start up? It can take between 1 and 5 minutes.</li>
+<li class="mt-3">Not all machines have a web server or SSH service running. Try pinging the machine in your console first: <code class="dark">ping MACHINE_IP</code>. If its responds, its reachable and you're not accessing it in the intended way.</li>
+<li class="mt-3">Are you definetly using the machine's IP and the 
+correct method of access with the right details (e.g. username) - try 
+rereading the task, have you missed something?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-title" data-toggle="collapse" href="#rfaqNoSSH" aria-expanded="false" aria-controls="multiCollapseExample1">
+<i class="fal fa-server hacker-green faq-icon"></i>
+Unable to SSH into a machine? <i class="fas fa-angle-down float-right mr-2 ml-auto"></i>
+</div>
+<div class="collapse multi-collapse" id="rfaqNoSSH">
+<div class="faq-desc"><p>Not all machines will have SSH enabled.</p>
+<p>You shouldn't be trying to SSH / RDP / Access a webserver unless 
+you've been told specifically to do so, or have scanned the machine 
+first to check that the service is running.</p>
+</div>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-title" data-toggle="collapse" href="#rfaqNoMachineWebsite" aria-expanded="false" aria-controls="multiCollapseExample1">
+<i class="fal fa-server hacker-green faq-icon"></i>
+Machine has no website?
+<i class="fas fa-angle-down float-right mr-2 ml-auto"></i>
+</div>
+<div class="collapse multi-collapse" id="rfaqNoMachineWebsite">
+<div class="faq-desc"><p>Not all machines you deploy will have a web 
+server running. Why not scan the machine with nmap to see if there is 
+one running on another port.</p>
+<p>Use the following nmap command: <code class="dark">nmap -v MACHINE_IP</code> - If there is a webserver running on another port, go to http://MACHINE_IP:PORT</p>
+</div>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-title" data-toggle="collapse" href="#rfaqNoInternet" aria-expanded="false" aria-controls="multiCollapseExample1">
+<i class="fal fa-server hacker-green faq-icon"></i>
+Machine has no internet access?
+<i class="fas fa-angle-down float-right mr-2 ml-auto"></i>
+</div>
+<div class="collapse multi-collapse" id="rfaqNoInternet">
+<div class="faq-desc"><p>If you are on a machine, the chances are it won't have internet access.</p>
+<p>To put a file onto your remote machine, you can:</p>
+<ul class="green-list mb-0">
+<li>Use SCP - You can copy a file to a remote machine with the following command: <code class="dark">scp YOUR_FILE you@remote.machine.org:/DIRECTORY</code></li>
+<li class="mt-3">Host a mini-webserver - You can host a mini-webserver on your machine. On your machine type: <code class="dark">python3 -m http.server 1234</code> where your files are hosted, then on the remote machine go to http://MACHINE_IP:1234 and download it.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-title" data-toggle="collapse" href="#rfaqStuckInRoom" aria-expanded="false" aria-controls="multiCollapseExample1">
+<i class="far fa-door-closed text-info faq-icon"></i>
+Stuck on a question?
+<i class="fas fa-angle-down float-right mr-2 ml-auto"></i>
+</div>
+<div class="collapse multi-collapse" id="rfaqStuckInRoom">
+<div class="faq-desc"><ul class="green-list mb-0">
+<li><b>Writeups</b> - Does the room have any writeups you can check? (Click the writeup tab or go to room options)</li>
+<li class="mt-3"><b>Using the internet</b> - Being able to research effectively is really important. You can improve your researching skills <a class="bold" href="https://tryhackme.com/room/introtoresearch">here</a>.</li>
+<li class="mt-3"><a target="_blank" class="bold" href="https://discord.gg/M7frQUP">Discord</a> - As a last resort, if you're really stuck why not ask our community for a hint on Discord?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-title" data-toggle="collapse" href="#rfaqNoVMCapability" aria-expanded="false" aria-controls="multiCollapseExample1">
+<i class="far fa-door-closed text-info faq-icon"></i>
+No in-browser machine capability?
+<i class="fas fa-angle-down float-right mr-2 ml-auto"></i>
+</div>
+<div class="collapse multi-collapse" id="rfaqNoVMCapability">
+<div class="faq-desc"><p>Not every room has the in-browser functionality. Its up to the room creator to add this capability.</p>
+</div>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-title" data-toggle="collapse" href="#rfaqWhereToStart" aria-expanded="false" aria-controls="multiCollapseExample1">
+<i class="far fa-door-closed text-info faq-icon"></i>
+Which rooms to start with?
+<i class="fas fa-angle-down float-right mr-2 ml-auto"></i>
+</div>
+<div class="collapse multi-collapse" id="rfaqWhereToStart">
+<div class="faq-desc"><p>If you are not sure where to start, check out:</p>
+<ul class="green-list mb-0">
+<li><a class="bold" href="https://tryhackme.com/paths">Pathways</a> - Choose a path and build up your knowledge using a mixture of room guides and challenges!</li>
+<li class="mt-3"><a class="bold" href="https://tryhackme.com/hacktivities">Hacktivities</a> - Search for a topic you enjoy and filter by your difficulty rating.</li>
+<li class="mt-3"><a class="bold" href="https://blog.tryhackme.com/going-from-zero-to-hero/">Zero to Hero post</a> - An overview on which rooms to start with both as a free and subscribed user.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-title" data-toggle="collapse" href="#rfaqPoints" aria-expanded="false" aria-controls="multiCollapseExample1">
+<i class="far fa-door-closed text-info faq-icon"></i>
+How do points work?
+<i class="fas fa-angle-down float-right mr-2 ml-auto"></i>
+</div>
+<div class="collapse multi-collapse" id="rfaqPoints">
+<div class="faq-desc"><p>Completing rooms gets you a certain number of points. A breakdown of how questions are scored as as follow:</p>
+<table class="table w-25 table-bordered text-center">
+<thead class="thead-dark-2">
+<tr>
+<th>Answered</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1st to answer</td>
+<td>80 points</td>
+</tr>
+<tr>
+<td>After first</td>
+<td>30 points</td>
+</tr>
+</tbody>
+</table>
+<p>If the room type is a walkthrough room, you only get 25% of those 
+points added to your account score. Challenge room’s receive 100% if the
+ room has been released during this month.</p>
+<p></p>All points you get are added to your ‘All-time’ score, however 
+not all points are added to your ‘Monthly’ score (which is reset to 0 on
+ the last day of the month 23:59 GMT). You only get 100% of a room's 
+monthly points if a room has been released during that month; you get 
+25% of challenge room points if its not released in this month. This 
+stops new users being able obtain large amounts of points as they have 
+more rooms to solve than older users - by monthly points only being 
+awarded if a room is released this month, everyone has a fair chance to 
+be number 1 on the ‘Monthly’ leaderboard and everyone has an equal 
+chance to be number 1 on the ‘All-time’ leaderboard.<p></p>
+<p class="mb-0">Summary</p>
+<ul>
+<li>Challenge rooms released this month, give you 100% of the points (to both your all-time and monthly score).</li>
+<li>Old challenge rooms (not released this month) will give you 25% of 
+the points to your monthly score and 100% to your all-time score.</li>
+<li>Walkthrough rooms released this month, give you 25% of the points to both your all-time and monthly score.</li>
+<li>Old Walkthrough rooms (not released this month) only give you 25% of
+ the points to your all-time score, none for your monthly score.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><script src="TryHackMe%20|%20Web%20Fundamentals_files/notify.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/sidebar.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/api-requests.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/underscore-min.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/apexcharts.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/chart.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/expire.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/issues.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/faqSearch.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/utils.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/roomSpecific.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/confetti.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/room.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/videos.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/intro.js"></script><script src="TryHackMe%20|%20Web%20Fundamentals_files/introjsLogic.js"></script><script>const a0_0x3fd4=['difficulty','\x22\x20data-parent=\x22#accordion\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22card-body\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','#hint-modal','%20','#room-options','browserBasedMachine','<button\x20type=\x22submit\x22\x20class=\x22btn\x20btn-success\x22\x20value=\x22','downloadable','screenee','#accordion','>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x22submit\x22\x20class=\x22btn\x20btn-primary\x22\x20value=\x22Download\x22\x20','<div\x20class=\x22col-sm\x20task-hint\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','\x22\x20onclick=\x22deploy(this)\x22><i\x20class=\x22fas\x20fa-cloud\x22></i>\x20Deploy</button>','noAnswer','<button\x20onclick=\x22showWriteupForm(this)\x22\x20type=\x22button\x22\x20class=\x22btn\x20btn-xs\x20btn-secondary\x20mb-2\x22>Add\x20Writeup</button>','\x22>[Task\x20','/api/submit/writeup','html,\x20body','undefined','#table-machine-ip','.card.nav-above-con','.voting-buttons','room','avatar','Extra\x20points\x20upon\x20answering','remote','question','<div\x20class=\x22card\x20mb\x20task-','#daysBetween','\x22>\x20<a\x20class=\x22nocss\x22\x20href=\x22/p/','THM','#video','CTF\x20Room','\x20task-hint\x22\x20onclick=\x22getHint(this)\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<i\x20class=\x22fas\x20fa-shoe-prints\x22></i>\x20Hint\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>','scroll','find','toggle','</span>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</a>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x22collapse','push','Hooray!','info','You\x20have\x20a\x20limited\x20time\x20in\x20this\x20room','keypress','incomplete','questions','slice','#userNo','taskDesc','answerDesc','.task-question','removeClass','owner','https://www.linkedin.com/shareArticle?mini=true&url=','round','/jr/','#machine-ip','internalIP','You\x20are\x20the\x20only\x20one\x20in\x20this\x20room.','video','\x22\x20onclick=\x22deploy(this)\x22\x20disabled><i\x20class=\x22fas\x20fa-cloud\x22></i>\x20Deploy</button>','innerHTML','mouseover','https://tryhackme.com/room/','room-image-large','description','toEarn','#task-list','<img\x20alt=\x22image\x22\x20class=\x22avatar-tiny\x22\x20src=\x22','timeInSeconds','#difficulty-bar','/api/','#copy-machine-ip','marginTop','<div\x20class=\x22bold\x22>IP\x20Address</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20id=\x22machine-ip\x22>','\x22\x20role=\x22progressbar\x22\x20style=\x22width:\x20','waitTime','\x27\x20onerror=\x27replaceImg(this)\x27>','transition','#room-type','Copied','\x27\x20role=\x27progressbar\x27\x20style=\x27width:\x20','.card-link','block','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</table>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</h5>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22row\x20task-question\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22col-sm-8\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=\x22text\x22\x20class=\x22form-control\x22\x20placeholder=\x22','MACHINE_IP','opacity','.task-answer','hint','length','#modal\x20>\x20.modal-dialog\x20>\x20.modal-content\x20>\x20.modal-footer','<a\x20target=\x22_blank\x22\x20class=\x22twitterIcon\x22\x20href=\x22','questionNo','\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20class=\x22card-link\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22','which','#room-banner-stats\x20>\x20.creators','#forum-text',']</span>\x20','value','loading','#modal','cloneable','<a\x20href=\x22','Shutting\x20your\x20machine\x20down...','removeChild','&via=realtryhackme&text=','<div\x20class=\x22card\x20shadow-light\x20text-center\x20mt-3\x22><div\x20class=\x22card-body\x22>','tasksInfo','.room-answer-field','#vote-down','/answer','data-original-title','display','<button\x20type=\x22button\x22\x20class=\x22btn\x20btn-outline-success\x20task-answer\x22\x20onclick=\x22answerQuestion(this)\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<i\x20class=\x22far\x20fa-paper-plane\x22></i>\x20Completed\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>','Free\x20Room','toLocaleDateString','\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=\x22hidden\x22\x20name=\x22id\x22\x20value=','clonable','Search\x20our\x20<a\x20href=\x22/forum\x22>forum</a>\x20for\x20pre-existing\x20threads\x20about\x20this\x20room,\x20or\x20create\x20your\x20own!','/api/vm/terminate','<a\x20target=\x22_blank\x22\x20class=\x22linkedinIcon\x22\x20href=\x22','simpleRoom','Join\x20this\x20room\x20to\x20view\x20hint\x20and\x20answer\x20questions.','#roomCompleted-share','#submit-writeup','<div\x20class=\x22alert\x20alert-info\x22>To\x20access\x20material,\x20deploy\x20machines\x20and\x20answer\x20questions\x20','Anyone\x20can\x20deploy\x20virtual\x20machines\x20in\x20this\x20room.','users','\x27>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27progress-bar\x20bg-','2-digit','<img\x20class=\x27room-avatar\x27\x20class=\x27float:\x20left\x27\x20src=\x27','type','\x20day\x20old','.col-sm-8','\x22>\x20<a\x20class=\x22green-link\x22\x20href=\x22/p/','split','expires','https://twitter.com/intent/tweet?url=','outerHTML','Did\x20you\x20know..','Uh-oh!','tags','show','<div\x20class=\x22alert\x20alert-info\x22>This\x20is\x20a\x20subscription\x20only\x20room.\x20To\x20deploy\x20material\x20and\x20answer\x20questions\x20you\x20will\x20need\x20to\x20<a\x20target=\x22_blank\x22\x20href=\x22/profile\x22>subscribe</a>.</div>','textContent','Join\x20this\x20room','#vote-number','getFullYear','forEach','Starting\x20your\x20machine..\x20please\x20wait!','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=\x22hidden\x22\x20name=\x22code\x22\x20value=\x22','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','deadline','<div\x20class=\x22alert\x20alert-primary\x20m0\x22>No\x20tasks\x20have\x20been\x20set\x20yet.</div>','getTime','color','icon','success','#writeups-data','#hint-modal\x20>\x20.modal-dialog\x20>\x20.modal-content\x20>\x20.modal-body','If\x20you\x20choose\x20to\x20leave\x20the\x20room,\x20your\x20rank\x20and\x20task\x20data\x20will\x20still\x20be\x20in\x20the\x20room.','</a></br>','offset','creatorDetails','\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<i\x20class=\x22fas\x20fa-crosshairs\x22></i>\x20','taskCreated','.card:first','Correct\x20Answer','&summary=','msg','This\x20room\x20is\x20','#about-freeRoom','button:contains(Deploy)','first','This\x20is\x20a\x20<b>CTF</b>\x20room.\x20Sign\x20in\x20to\x20participate\x20in\x20the\x20CTF\x20event.','handleUpdate','card','prop','ajaxSetup','hide','<p>','\x22\x20onclick=\x22quickJoin()\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x22button\x22\x20class=\x22btn\x20btn-outline-primary\x20task-answer\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','&hashtags=tryhackme%2C','extraPoints','href','<h5>No\x20questions\x20have\x20been\x20set..</h5>','toFixed','</div>','assessment','writeups','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>','insertBefore','#award-modal-badges','join','taskType','bootstrapColor','warning','\x22><button\x20type=\x22button\x22\x20class=\x22twitter-btn\x20btn\x20btn-primary\x22><i\x20class=\x22fab\x20fa-twitter\x22></i>\x20Share\x20on\x20Twitter</button></a>','red','created','<a\x20target=\x22_blank\x22\x20class=\x22facebookIcon\x22\x20href=\x22','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x22submit\x22\x20class=\x22btn\x20btn-danger\x22>Leave\x20room</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</a>','#343c42','https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftryhackme.com','update','\x20days\x20of\x20access\x20left</span>','body','\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22col-sm\x20pl-0\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','#top-panel','.card-header','\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=\x22hidden\x22\x20value=\x27','you\x20need\x20to\x20join\x20this\x20room!\x20<button\x20class=\x22btn\x20btn-success\x20btn-sm\x20float-right\x20join-btn\x22\x20onclick=\x22quickJoin()\x22>Join\x20Room</button>','tab','instance-sticky','attr','You\x20have\x20access\x20to\x20this\x20room\x20for\x20a\x20limited\x20time.','getMonth','#sponsor-close','This\x20is\x20a\x20<b>free</b>\x20room,\x20which\x20means\x20anyone\x20can\x20deploy\x20virtual\x20machines\x20in\x20the\x20room\x20(without\x20being\x20subscribed)!','network','Proudly\x20presented\x20by\x20','.col-sm-2','post','There\x20are\x20no\x20writeups\x20submitted.','<i\x20class=\x22fas\x20fa-exclamation-circle\x20text-danger\x22\x20aria-hidden=\x22true\x22></i>\x20','\x20days\x20old','link','active','hash','tooltip','image','\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22card-header\x20task-header\x22\x20data-toggle=\x22collapse\x22\x20href=\x22#collapse','assets/sponsors/','<button\x20type=\x22button\x22\x20class=\x22btn\x20','[data-toggle=\x22tooltip\x22]','/api/get-votes/','disabled','getJSON','Woop\x20woop!','#instance-info','classList','closest','taskNo','\x20<a\x20target=\x22_blank\x22\x20href=\x22','parentNode','#sponsor-data','long','</a>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20by\x20<img\x20class=\x22user-avatar-writeup\x22\x20src=\x22','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<i\x20onclick=\x22copyMachineIP()\x22\x20id=\x22copy-machine-ip\x22\x20class=\x22fal\x20fa-copy\x20faded\x20hover-pointer\x20size-14\x22\x20data-toggle=\x22tooltip\x22\x20title=\x22Copy\x20to\x20clipboard\x22></i>','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x09\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x09\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22col-sm-2\x20text-center\x22\x20style=\x22margin:\x200;\x20padding:\x200;\x20overflow:\x20hidden;\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x09\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','Timed\x20Access\x20Room','#writeup-form','uploadId','btn-warning\x20faded','complete','#awards-model-btn','secondary','#task-list-label','roomId','none','getElementsByTagName','submission','clear','message','%;\x20aria-valuemin=\x220\x22\x20aria-valuemax=\x22100\x22>\x20','addEventListener','<span\x20class=\x22badge\x20badge-hacker-green\x20extra-points\x22\x20data-toggle=\x27tooltip\x27\x20data-html=\x27true\x27\x20title=\x27','Leave\x20Room','top','trigger','#sponsor','freeToUse','<div\x20class=\x22text-center\x20room-locked\x22><img\x20src=\x22https://assets.tryhackme.com/img/undraw/lock.svg\x22></br>The\x20room\x20owner\x20has\x20locked\x20this\x20room,\x20which\x20means\x20you\x20cannot\x20view\x20any\x20task\x20content.</div>','correct','s\x20ease','<h5\x20class=\x22mt\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<table>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20class=\x22task-badge\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22badge\x20badge-secondary\x22>#','Read\x20or\x20post\x20on\x20the\x20dedicated\x20forum\x20<a\x20href=\x22','\x22\x20id=\x22','<form\x20method=\x22post\x22\x20action=\x22/room/leave\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=\x22hidden\x22\x20name=\x22_csrf\x22\x20value=\x22','#roomCompleted','<div\x20class=\x22bold\x22>Expires</div><span\x20id=\x22expires\x22></span>','replace','Subscription\x20Only\x20Room','>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=\x22hidden\x22\x20value=\x27','<span\x20id=\x22progress-bar\x22></span>','parentElement','#room-message','<div\x20class=\x22col-sm-2\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x22button\x22\x20class=\x22btn\x20btn-outline-warning\x20task-hint\x22\x20onclick=\x22getHint(this)\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<i\x20class=\x22fas\x20fa-shoe-prints\x22></i>\x20Hint\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>','#room-faq-slideout','/deploy','<i\x20class=\x22far\x20fa-server\x20text-lgreen\x22\x20data-toggle=\x22tooltip\x22\x20data-placement=\x22left\x22\x20title=\x22Task\x20includes\x20a\x20deployable\x20machine\x22></i>','\x22>post</a>','/room/vote','quickJoin()','addClass','<a\x20href=\x22/login\x22>login</a>.','data','username','forumLink','click','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22float-right\x22><i\x20class=\x22fas\x20fa-angle-down\x22></i></span>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22task-resources\x22>','paidAccess','\x22><button\x20type=\x22button\x22\x20class=\x22facebook-btn\x20btn\x20btn-primary\x22><i\x20class=\x22fab\x20fa-facebook-f\x22></i>\x20Share\x20on\x20Facebook</button></a>','modal','false','style','#writeup-title','querySelector','#terminate-vm','mouseleave','/api/get-badges','load','<button\x20type=\x22button\x22\x20class=\x22btn\x20btn-secondary\x22\x20data-dismiss=\x22modal\x22>Close</button>','<div\x20class=\x27room-progress-bar\x27><div\x20class=\x27progress\x27\x20id=\x27room-progress-2\x27\x20data-toggle=\x27tooltip\x27\x20data-html=\x27true\x27\x20title=\x27Rated\x20','#logo','#title','<form\x20method\x20=\x22post\x22\x20action=\x22/deploy\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=\x22hidden\x22\x20name=\x22roomCode\x22\x20value=\x22','#room-main\x20>\x20.card-body','#modal\x20>\x20.modal-dialog\x20>\x20.modal-content\x20>\x20.modal-body','\x22><button\x20type=\x22button\x22\x20class=\x22linkedin-btn\x20btn\x20btn-primary\x22><i\x20class=\x22fab\x20fa-linkedin-in\x22></i>\x20Share\x20on\x20LinkedIn</button></a>','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','</div></div>','https%3A%2F%2Ftryhackme.com/room/','Successfully\x20updated\x20your\x20machines\x20expiry\x20time.','start','#about-owner','danger','className','ownerAvatar','code','#room-tabs','true','daysLeft','<div\x20class=\x22task-deadline\x22>Due:\x20','/api/get-my-votes/','title','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</a>','getElementById','machine-ip','&title=','>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=\x22hidden\x22\x20value=\x27','taskDeadline','inline-block','<i\x20class=\x22fas\x20fa-pen-alt\x22></i>\x20Writeups','&source=TryHackMe','#vote-up','scrollTop','#add-vm-time','includes'];(function(_0x224c27,_0x3fd4cf){const _0x583fac=function(_0x370cc7){while(--_0x370cc7){_0x224c27['push'](_0x224c27['shift']());}};_0x583fac(++_0x3fd4cf);}(a0_0x3fd4,0xf4));const a0_0x583f=function(_0x224c27,_0x3fd4cf){_0x224c27=_0x224c27-0x0;let _0x583fac=a0_0x3fd4[_0x224c27];return _0x583fac;};let height;$(window)[a0_0x583f('0x8b')](function(){if(height==undefined||height<0x1e){height=$(a0_0x583f('0x157'))[a0_0x583f('0x10a')]()[a0_0x583f('0x17')];}let _0x2fd128=$(window)[a0_0x583f('0x66')]();if(_0x2fd128>=height+0x96&&height>0x1e){$(a0_0x583f('0x157'))[a0_0x583f('0x32')](a0_0x583f('0x13d'));}else if(_0x2fd128<=height){$(a0_0x583f('0x157'))[a0_0x583f('0x9b')](a0_0x583f('0x13d'));}});const csrfToken='6paBmUkE-OC4g4HsRJVOTPZ0ndIzggVskfr4';$[a0_0x583f('0x11a')]({'headers':{'CSRF-Token':csrfToken}});let loaded={'browserBasedMachine':![]};const roomCode='webfundamentals';const simpleRoom='true';const roomHeaderImgEl=document[a0_0x583f('0x3f')]('#room-image-large');function setEnterAnswerEvent(){$(a0_0x583f('0xd4'))[a0_0x583f('0x93')](function(_0x17e92e){if(_0x17e92e[a0_0x583f('0xc6')]==0xd){$(event['target'])[a0_0x583f('0x159')](a0_0x583f('0x9a'))[a0_0x583f('0x8c')](a0_0x583f('0xbf'))[a0_0x583f('0x18')]('click');}});}$(a0_0x583f('0x141'))['click'](function(){document[a0_0x583f('0x3f')](a0_0x583f('0x19'))[a0_0x583f('0x3d')][a0_0x583f('0xd8')]='none';});const writeupFormEl=document[a0_0x583f('0x3f')](a0_0x583f('0x6'));let addWriteupBtnClicked=![];function showWriteupForm(_0x29f4b4){_0x29f4b4[a0_0x583f('0x3d')][a0_0x583f('0xd8')]=a0_0x583f('0xe');writeupFormEl[a0_0x583f('0x3d')][a0_0x583f('0xd8')]=a0_0x583f('0x62');addWriteupBtnClicked=!![];}$(a0_0x583f('0xe4'))[a0_0x583f('0x37')](function(_0xbc013f){const _0x17d15b=document[a0_0x583f('0x3f')]('#writeup-link');const _0x5a8b9c=_0x17d15b['value'];const _0x149383=document[a0_0x583f('0x3f')](a0_0x583f('0x3e'));$['post'](a0_0x583f('0x79'),{'link':_0x5a8b9c,'title':_0x149383[a0_0x583f('0xca')],'code':roomCode},async function(_0x21a319){if(_0x21a319['success']){_0x17d15b[a0_0x583f('0x3d')][a0_0x583f('0xd8')]='none';_0xbc013f['target']['style'][a0_0x583f('0xd8')]=a0_0x583f('0xe');_0x149383[a0_0x583f('0x3d')][a0_0x583f('0xd8')]=a0_0x583f('0xe');displayMessages(a0_0x583f('0x90'),a0_0x583f('0x105'),_0x21a319[a0_0x583f('0x111')]);}else{displayMessages(a0_0x583f('0xf4'),a0_0x583f('0x52'),_0x21a319['msg']);}if(simpleRoom==a0_0x583f('0x57')){$(a0_0x583f('0xcc'))[a0_0x583f('0x3b')](a0_0x583f('0x8d'));}});});let ipEl=document[a0_0x583f('0x3f')](a0_0x583f('0x157'));let allIpEls=ipEl['querySelectorAll']('.card-body\x20>\x20.row\x20>\x20.col-sm-3');async function getRunningInstances(_0x2f30d6){return new Promise(async function(_0x836155,_0x4de27b){$['getJSON']('/api/running-instances',async function(_0xf020d0){if(_0xf020d0[a0_0x583f('0xc1')]>0x0){_0xf020d0[a0_0x583f('0xfc')](function(_0x4b8943){if(_0x4b8943[a0_0x583f('0xd')]==_0x2f30d6){return _0x836155({'success':!![],'data':_0x4b8943});}});return _0x836155({'success':![]});}else{return _0x836155({'success':![]});}});});}function getMyVote(){$['getJSON'](a0_0x583f('0x5a')+roomCode,async function(_0x5567b8){document['querySelector'](a0_0x583f('0x65'))['style']['color']=a0_0x583f('0x132');document[a0_0x583f('0x3f')](a0_0x583f('0xd5'))[a0_0x583f('0x3d')][a0_0x583f('0x103')]='#343c42';if(_0x5567b8==0x1){document[a0_0x583f('0x3f')](a0_0x583f('0x65'))[a0_0x583f('0x3d')][a0_0x583f('0x103')]='green';}else if(_0x5567b8==-0x1){document[a0_0x583f('0x3f')](a0_0x583f('0xd5'))[a0_0x583f('0x3d')][a0_0x583f('0x103')]=a0_0x583f('0x12e');}});}function makeVote(_0x2caa04){$['post'](a0_0x583f('0x30'),{'code':roomCode,'vote':_0x2caa04},async function(_0x4616cf){if(_0x4616cf[a0_0x583f('0x105')]){getRoomVotes();getMyVote();}else{displayMessages(a0_0x583f('0xf4'),a0_0x583f('0x52'),_0x4616cf[a0_0x583f('0x111')]);}});}function getRoomVotes(){$['getJSON'](a0_0x583f('0x153')+roomCode,async function(_0x4c8544){document[a0_0x583f('0x3f')](a0_0x583f('0xfa'))['textContent']=_0x4c8544;});}function deploy(_0x4b1d8b){_0x4b1d8b['disabled']=!![];if(subscribed==![]){displayMessages(a0_0x583f('0xf3'),a0_0x583f('0x91'),'by\x20<a\x20target=\x22_blank\x22\x20href=\x22/profile#subscribe\x22>subscribing</a>\x20your\x20machines\x20deploy\x20quicker\x20and\x20with\x20more\x20resources');}displayMessages('',a0_0x583f('0x12c'),a0_0x583f('0xfd'));$['post'](a0_0x583f('0x2d'),{'id':_0x4b1d8b[a0_0x583f('0xca')],'roomCode':roomCode},async function(_0x465776){if(_0x465776['success']){deploymentInfo(_0x465776[a0_0x583f('0x5b')],_0x465776[a0_0x583f('0xa1')],_0x465776[a0_0x583f('0xf0')],_0x465776['created'],_0x465776[a0_0x583f('0x82')],_0x465776[a0_0x583f('0xb4')]);displayMessages(a0_0x583f('0x90'),'success',_0x465776[a0_0x583f('0x111')]);}else{displayMessages(a0_0x583f('0xf4'),a0_0x583f('0x52'),_0x465776[a0_0x583f('0x111')]);}});}const tableMachineIpEl=document['querySelector'](a0_0x583f('0x7c'));function deploymentInfo(_0x572ee5,_0x18a143,_0xa30137,_0x7e4370,_0x383391,_0x40ccd8){ipEl[a0_0x583f('0x3d')][a0_0x583f('0xd8')]='block';allIpEls[0x0][a0_0x583f('0xa5')]='<div\x20class=\x22bold\x22>Title</div>'+_0x572ee5;allIpEls[0x1]['innerHTML']=a0_0x583f('0xb2')+(_0x18a143?_0x18a143:'-')+a0_0x583f('0x3');allIpEls[0x2][a0_0x583f('0xa5')]=a0_0x583f('0x23');allIpEls[0x3][a0_0x583f('0xa5')]='\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn\x20btn-warning\x20deployment-info\x22\x20onclick=\x22addHour()\x22\x20id=\x22add-vm-time\x22\x20value=\x22'+roomCode+'\x22>Add\x201\x20hour</button>\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x22button\x22\x20class=\x22btn\x20btn-danger\x20deployment-info\x22\x20id=\x22terminate-vm\x22\x20onclick=\x22terminate(this)\x22>Terminate</button>';const _0x2b6c1c=document[a0_0x583f('0x3f')]('#expires');const _0x5b8f70=document[a0_0x583f('0x3f')](a0_0x583f('0xa0'));startTimer(_0xa30137,_0x2b6c1c,a0_0x583f('0x7f'));if(!_0x18a143){startIPTimer(_0x5b8f70,_0x40ccd8,a0_0x583f('0x7f'));}else{clearInterval(IPIntervalId);}checkRoomOnDeploy(roomCode,_0x572ee5,_0x18a143,_0xa30137,_0x7e4370,_0x383391);tableMachineIpEl['addEventListener'](a0_0x583f('0xa6'),function(){document[a0_0x583f('0x3f')](a0_0x583f('0xb0'))[a0_0x583f('0x3d')][a0_0x583f('0xd8')]=a0_0x583f('0x62');});tableMachineIpEl[a0_0x583f('0x14')](a0_0x583f('0x41'),function(){document[a0_0x583f('0x3f')](a0_0x583f('0xb0'))[a0_0x583f('0x3d')]['display']=a0_0x583f('0xe');});}function copyMachineIP(){copyClipboard(a0_0x583f('0x5e'));const _0xc70a3d=$('#copy-machine-ip');_0xc70a3d[a0_0x583f('0x13e')]('data-original-title',a0_0x583f('0xb8'))[a0_0x583f('0x14d')]('show');setTimeout(function(){_0xc70a3d['tooltip'](a0_0x583f('0x11b'));_0xc70a3d[a0_0x583f('0x13e')](a0_0x583f('0xd7'),'Copy\x20to\x20clipboard');},0x5dc);}function addHour(_0x52fcbc){$['post']('/api/vm/renew',{'code':roomCode},async function(_0x237fbb){if(_0x237fbb[a0_0x583f('0x105')]){displayMessages('',a0_0x583f('0x105'),a0_0x583f('0x4f'));const _0x3bbbec=document[a0_0x583f('0x3f')]('#expires');clearInterval(intervalId);startTimer(_0x237fbb[a0_0x583f('0xad')],_0x3bbbec,a0_0x583f('0x7f'));}else{displayMessages(a0_0x583f('0xf4'),a0_0x583f('0x12c'),_0x237fbb[a0_0x583f('0x111')]);allIpEls[0x3][a0_0x583f('0x3f')](a0_0x583f('0x67'))[a0_0x583f('0x154')]=!![];}});}function terminate(_0x41ea30){_0x41ea30[a0_0x583f('0x154')]=!![];displayMessages('','warning',a0_0x583f('0xcf'));$[a0_0x583f('0x146')](a0_0x583f('0xdf'),{'code':roomCode},async function(_0x592fe7){clearInterval(intervalId);if(_0x592fe7[a0_0x583f('0x105')]){ipEl[a0_0x583f('0x3d')][a0_0x583f('0xd8')]=a0_0x583f('0xe');displayMessages('',a0_0x583f('0x105'),_0x592fe7['msg']);$(a0_0x583f('0x114'))[a0_0x583f('0x119')]('disabled',![]);clearVmBoxes();updateMachineTag(a0_0x583f('0x11'),'');}else{displayMessages(a0_0x583f('0xf4'),a0_0x583f('0x12c'),_0x592fe7[a0_0x583f('0x111')]);allIpEls[0x3][a0_0x583f('0x3f')]('#add-vm-time')['disabled']=!![];allIpEls[0x3][a0_0x583f('0x3f')](a0_0x583f('0x40'))[a0_0x583f('0x154')]=!![];}});}function clearVmBoxes(){const _0x569415=document[a0_0x583f('0x3f')]('#remote-connection-1');const _0x4342a7=document[a0_0x583f('0x3f')]('#remote-box');if(_0x569415){_0x569415[a0_0x583f('0xf2')]='';}if(_0x4342a7){_0x4342a7['outerHTML']='';}if(countDownLoop){clearInterval(countDownLoop);}loaded[a0_0x583f('0x6e')]=![];}let modalTitle=document[a0_0x583f('0x3f')]('#modal\x20>\x20.modal-dialog\x20>\x20.modal-content\x20>\x20.modal-header\x20>\x20.modal-title');let modalBody=document[a0_0x583f('0x3f')](a0_0x583f('0x4a'));let modalFooter=document[a0_0x583f('0x3f')](a0_0x583f('0xc2'));const closeBtn=a0_0x583f('0x44');document[a0_0x583f('0x3f')]('#leave-room')[a0_0x583f('0x14')](a0_0x583f('0x37'),function(){modalTitle[a0_0x583f('0xf8')]=a0_0x583f('0x16');modalBody[a0_0x583f('0xf8')]=a0_0x583f('0x108');const _0x2245ae=a0_0x583f('0x21')+csrfToken+a0_0x583f('0xfe')+roomCode+a0_0x583f('0x131');modalFooter['innerHTML']=_0x2245ae+closeBtn;$(a0_0x583f('0xcc'))[a0_0x583f('0x3b')]('show');});function generateLinkedInShareLink(_0x44106f,_0x284068,_0x1e79f3){return encodeURI(a0_0x583f('0x9d')+_0x44106f+a0_0x583f('0x5f')+_0x284068+a0_0x583f('0x110')+_0x1e79f3+a0_0x583f('0x64'));}initIssuesClickModal(roomCode);function initWriteupClickModal(){const _0x55c5d5=document['querySelector']('#writeups-simple');_0x55c5d5['style']['display']='inline-block';_0x55c5d5['addEventListener']('click',function(){modalFooter[a0_0x583f('0xa5')]='';writeupFormEl[a0_0x583f('0x3d')][a0_0x583f('0xb1')]=0x0;modalTitle[a0_0x583f('0xa5')]=a0_0x583f('0x63');modalBody[a0_0x583f('0xa5')]=getWriteupListHTML(roomDataGlobal[a0_0x583f('0x125')]);if(!addWriteupBtnClicked)modalFooter['innerHTML']=a0_0x583f('0x77');modalFooter['appendChild'](writeupFormEl);$(a0_0x583f('0xcc'))[a0_0x583f('0x3b')](a0_0x583f('0x117'));$(a0_0x583f('0xcc'))[a0_0x583f('0x3b')](a0_0x583f('0xf6'));});}function getWriteupListHTML(_0x477510){let _0x4250d3='';for(let _0x15bf8f of _0x477510){_0x4250d3+=a0_0x583f('0x15b')+_0x15bf8f[a0_0x583f('0x14a')]+'\x22>'+_0x15bf8f[a0_0x583f('0x5b')]+a0_0x583f('0x2')+_0x15bf8f[a0_0x583f('0x80')]+a0_0x583f('0x86')+_0x15bf8f[a0_0x583f('0x35')]+'\x22>'+_0x15bf8f[a0_0x583f('0x35')]+a0_0x583f('0x109');}if(_0x477510['length']==0x0){_0x4250d3=a0_0x583f('0x147');}return _0x4250d3;}function quickJoin(){window['location'][a0_0x583f('0x120')]=a0_0x583f('0x9f')+roomCode;}let allowDeployment=!![];let roomType='';let statusCode=0x1;const viewerCodes=[0x2,0x4,0x5,0x6,0x7];let ctfRoom=![];if('false'==a0_0x583f('0x57')){ctfRoom=!![];}async function checkForRunningInstances(){const _0x3cdf3=await getRunningInstances(roomCode);if(_0x3cdf3[a0_0x583f('0x105')]){allowDeployment=![];deploymentInfo(_0x3cdf3[a0_0x583f('0x34')][a0_0x583f('0x5b')],_0x3cdf3[a0_0x583f('0x34')][a0_0x583f('0xa1')],_0x3cdf3[a0_0x583f('0x34')][a0_0x583f('0xad')],_0x3cdf3['data'][a0_0x583f('0x12f')],_0x3cdf3[a0_0x583f('0x34')][a0_0x583f('0x82')],_0x3cdf3[a0_0x583f('0x34')][a0_0x583f('0xb4')]);}}function addBannerStats(_0x29c078,_0x4e564f){const _0xfc07d6=document[a0_0x583f('0x3f')]('#room-banner-stats\x20>\x20.numbers');const _0x53cae8=document[a0_0x583f('0x3f')](a0_0x583f('0xc7'));if(_0x29c078&&_0x29c078[a0_0x583f('0x58')]>0x0){_0xfc07d6[a0_0x583f('0xa5')]+='<span\x20id=\x27room-access-remaining\x27\x20class=\x22badge-outline\x20light\x20size-14\x22>'+_0x29c078['daysLeft']+a0_0x583f('0x135');}if(_0x4e564f&&_0x4e564f[a0_0x583f('0x14b')]){let _0x15cf70=[];for(const _0x204105 of _0x4e564f[a0_0x583f('0x10b')]){_0x15cf70['push'](a0_0x583f('0xac')+_0x204105[a0_0x583f('0x80')]+a0_0x583f('0xee')+_0x204105[a0_0x583f('0x35')]+'\x22>'+_0x204105['username']+'</a>');}_0x53cae8[a0_0x583f('0xa5')]=a0_0x583f('0x144')+_0x15cf70['join']('\x20and\x20');}}let roomDataGlobal={};async function init(){const _0x3cd02b=await getRoomData(roomCode);roomDataGlobal=_0x3cd02b;let _0x2e19b4=document[a0_0x583f('0x3f')](a0_0x583f('0x6d'));let _0x549774=document[a0_0x583f('0x3f')]('#clone-room');let _0x2fc4b=document[a0_0x583f('0x3f')]('#leave-room');statusCode=_0x3cd02b[a0_0x583f('0x55')];roomType=_0x3cd02b['type'];freeToUse=_0x3cd02b[a0_0x583f('0x1a')];roomTags=_0x3cd02b[a0_0x583f('0xf5')];const _0xd7f9a3=_0x3cd02b[a0_0x583f('0xa3')]?_0x3cd02b[a0_0x583f('0xa3')][a0_0x583f('0x14b')]:![];if(_0xd7f9a3){getRoomVideo(roomCode);}addSponsorData(_0x3cd02b['sponsor']);addBannerStats(_0x3cd02b[a0_0x583f('0x39')],_0x3cd02b[a0_0x583f('0x143')]);if(statusCode!=0x4&&statusCode!=0x5){document[a0_0x583f('0x3f')](a0_0x583f('0x6d'))[a0_0x583f('0x3d')]['display']=a0_0x583f('0x62');if(!_0x3cd02b[a0_0x583f('0xcd')]){_0x549774[a0_0x583f('0x3d')][a0_0x583f('0xd8')]='none';}}if(statusCode==0x2){_0x2fc4b[a0_0x583f('0x3d')][a0_0x583f('0xd8')]='none';}if(statusCode==0x2&&!_0x3cd02b[a0_0x583f('0xdd')]){_0x2e19b4['style'][a0_0x583f('0xd8')]=a0_0x583f('0xe');}if(!_0x3cd02b[a0_0x583f('0xe1')]){document[a0_0x583f('0x3f')](a0_0x583f('0x56'))[a0_0x583f('0x3d')][a0_0x583f('0xd8')]=a0_0x583f('0xbb');document[a0_0x583f('0x3f')](a0_0x583f('0xc'))[a0_0x583f('0x158')]='mb';document[a0_0x583f('0x3f')](a0_0x583f('0x138'))[a0_0x583f('0x3d')][a0_0x583f('0xd8')]=a0_0x583f('0xbb');}if(!viewerCodes[a0_0x583f('0x68')](statusCode)){checkForRunningInstances();}else{allowDeployment=![];let _0x2d828a=a0_0x583f('0x33');if(statusCode==0x2){_0x2d828a=a0_0x583f('0x13b');}if(_0x3cd02b['success']){const _0x143b2f=a0_0x583f('0xe5')+_0x2d828a+'</div>';$(_0x143b2f)[a0_0x583f('0x127')](a0_0x583f('0x29'));}writeupFormEl[a0_0x583f('0x3d')][a0_0x583f('0xd8')]=a0_0x583f('0xe');}let _0x17dd89=document[a0_0x583f('0x3f')](a0_0x583f('0x47'));let _0x4edfab=document[a0_0x583f('0x3f')]('#description');let _0x259cff=document[a0_0x583f('0x3f')](a0_0x583f('0x97'));let _0x3bbfb6=document[a0_0x583f('0x3f')](a0_0x583f('0x46'));let _0x583119=document[a0_0x583f('0x3f')](a0_0x583f('0x85'));let _0x59b983=0x18*0x3c*0x3c*0x3e8;let _0x380378=new Date(_0x3cd02b[a0_0x583f('0x12f')]);let _0x4487bc=new Date();let _0x4169da=Math[a0_0x583f('0x9e')](Math['abs']((_0x380378[a0_0x583f('0x102')]()-_0x4487bc[a0_0x583f('0x102')]())/_0x59b983));if(_0x3cd02b[a0_0x583f('0x105')]){if(roomHeaderImgEl){roomHeaderImgEl['style'][a0_0x583f('0xd8')]=a0_0x583f('0xbb');}addWriteups(_0x3cd02b[a0_0x583f('0x125')]);const _0x4a8577=document[a0_0x583f('0x3f')](a0_0x583f('0xc8'));if(_0x3cd02b[a0_0x583f('0x36')]){_0x4a8577['innerHTML']=a0_0x583f('0x1f')+_0x3cd02b[a0_0x583f('0x36')]+a0_0x583f('0x2f');}else{_0x4a8577[a0_0x583f('0xa5')]=a0_0x583f('0xde');}_0x3bbfb6[a0_0x583f('0xa5')]=a0_0x583f('0xea')+_0x3cd02b[a0_0x583f('0x14e')]+a0_0x583f('0xb5');_0x17dd89['innerHTML']=_0x3cd02b['title'];_0x4edfab['innerHTML']=_0x3cd02b[a0_0x583f('0xa9')];let _0x5e7bf6=_0x3cd02b[a0_0x583f('0xe7')]+'\x20users\x20are\x20in\x20here';if(_0x3cd02b['users']==0x1||_0x3cd02b[a0_0x583f('0xe7')]==0x0){_0x5e7bf6=a0_0x583f('0xa2');}_0x259cff[a0_0x583f('0xf8')]=_0x5e7bf6;let _0xcf4c50=a0_0x583f('0x112')+_0x4169da+a0_0x583f('0x149');if(_0x4169da==0x0){_0xcf4c50='Room\x20created\x20today';}else if(_0x4169da==0x1){_0xcf4c50=a0_0x583f('0x112')+_0x4169da+a0_0x583f('0xec');}_0x583119['innerHTML']=_0xcf4c50;const _0x2cb172=getDiffHTML(_0x3cd02b[a0_0x583f('0x69')]);const _0x285f5a=document[a0_0x583f('0x3f')](a0_0x583f('0xae'));_0x285f5a[a0_0x583f('0xa5')]=a0_0x583f('0x45')+_0x2cb172[a0_0x583f('0xeb')]+a0_0x583f('0xe8')+_0x2cb172[a0_0x583f('0x12b')]+a0_0x583f('0xb9')+_0x2cb172['percentage']+'%;\x27\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20aria-valuemin=\x270\x27\x20aria-valuemax=\x27100\x27></div>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div><div\x20class=\x27diff-text\x27>Difficulty:</div></div>';$(function(){$('#room-progress-2')[a0_0x583f('0x14d')]();});const _0xfce30a=htmlGenUserShort(_0x3cd02b[a0_0x583f('0x9c')],_0x3cd02b[a0_0x583f('0x54')]);document['querySelector'](a0_0x583f('0x51'))[a0_0x583f('0xa5')]=_0xfce30a;let _0x27b285='';let _0x1335e1='';let _0x2b5220='';if(ctfRoom){if(!viewerCodes['includes'](statusCode)){_0x27b285='This\x20is\x20a\x20<b>CTF</b>\x20room.\x20This\x20room\x20shows\x20progress\x20for\x20users\x20in\x20teams\x20only.';}else{_0x27b285=a0_0x583f('0x116');}_0x1335e1='All\x20resources\x20are\x20free\x20to\x20use.';_0x2b5220=a0_0x583f('0x89');}else if(_0x3cd02b[a0_0x583f('0x39')][a0_0x583f('0x14b')]){_0x27b285=a0_0x583f('0x13f');_0x1335e1=a0_0x583f('0x92');_0x2b5220=a0_0x583f('0x5');}else if(freeToUse){_0x27b285=a0_0x583f('0x142');_0x1335e1=a0_0x583f('0xe6');_0x2b5220=a0_0x583f('0xda');}else{_0x27b285='Only\x20subscribers\x20can\x20deploy\x20virtual\x20machines\x20in\x20this\x20room!\x20Go\x20to\x20your\x20<a\x20href=\x22/profile\x22>profile</a>\x20page\x20to\x20subscribe\x20(if\x20you\x20have\x20not\x20already).';_0x1335e1='Only\x20subscribers\x20can\x20deploy\x20virtual\x20machines\x20in\x20this\x20room';_0x2b5220=a0_0x583f('0x25');}document[a0_0x583f('0x3f')](a0_0x583f('0x113'))[a0_0x583f('0xa5')]=_0x27b285+'\x20';const _0x77ced1=document[a0_0x583f('0x3f')]('#room-type');_0x77ced1[a0_0x583f('0xf8')]='('+_0x2b5220+')';$('#room-type')[a0_0x583f('0x13e')](a0_0x583f('0xd7'),_0x1335e1);$(function(){$(a0_0x583f('0xb7'))[a0_0x583f('0x14d')]();});const _0x405c41='1';if(!freeToUse&&_0x405c41==0x0&&!viewerCodes[a0_0x583f('0x68')](statusCode)&&!ctfRoom){const _0x45a104=a0_0x583f('0xf7');$(_0x45a104)[a0_0x583f('0x127')](a0_0x583f('0x10e'));}if(_0x3cd02b['simpleRoom']){generateSimpleFooterCard(_0xfce30a,a0_0x583f('0x11c')+_0x27b285+'</p>');initWriteupClickModal();if(_0xd7f9a3)videoSimpleMove();}getTasks();if(_0x3cd02b[a0_0x583f('0x71')][a0_0x583f('0x14b')]){assessmentCountdown(_0x3cd02b[a0_0x583f('0x100')]['end'],_0x3cd02b[a0_0x583f('0x100')][a0_0x583f('0x50')],'assessment-timer');}}else{_0x17dd89[a0_0x583f('0xa5')]=a0_0x583f('0x148')+_0x3cd02b['message'];_0x3bbfb6['style'][a0_0x583f('0xd8')]='none';_0x4edfab[a0_0x583f('0xa5')]='';document['querySelector']('.card-footer')[a0_0x583f('0x3d')][a0_0x583f('0xd8')]=a0_0x583f('0xe');document['querySelector'](a0_0x583f('0x2c'))[a0_0x583f('0x3d')][a0_0x583f('0xd8')]=a0_0x583f('0xe');document['querySelector']('#task-navs')[a0_0x583f('0x3d')][a0_0x583f('0xd8')]=a0_0x583f('0xe');document[a0_0x583f('0x3f')](a0_0x583f('0x7d'))[a0_0x583f('0x53')]=a0_0x583f('0x118');document[a0_0x583f('0x3f')](a0_0x583f('0xab'))['style'][a0_0x583f('0xd8')]='none';const _0x1f19c1=document['querySelector'](a0_0x583f('0x49'));const _0x2f76dd=document['querySelector'](a0_0x583f('0x7e'));_0x2f76dd[a0_0x583f('0x3d')][a0_0x583f('0xd8')]=a0_0x583f('0xe');badgeBtnEl[a0_0x583f('0x3d')][a0_0x583f('0xd8')]=a0_0x583f('0xe');if(statusCode==0x6){pendingAssessment(_0x1f19c1,_0x3cd02b[a0_0x583f('0x124')]);}else if(statusCode==0x7){_0x1f19c1['innerHTML']=a0_0x583f('0x1b');}else{_0x1f19c1[a0_0x583f('0xa5')]='If\x20this\x20is\x20an\x20error\x20on\x20our\x20behalf.\x20Please\x20contact\x20us.';}if(roomHeaderImgEl){roomHeaderImgEl[a0_0x583f('0x3d')]['display']=a0_0x583f('0xe');}removeFadeOut(document[a0_0x583f('0x5d')](a0_0x583f('0xcb')),0x3e8);}}function generateSimpleFooterCard(_0x287a00,_0x13d1ce){const _0xc0c08=document[a0_0x583f('0x3f')]('#room-simple-details');_0xc0c08[a0_0x583f('0xa5')]=a0_0x583f('0xd2')+_0x287a00+_0x13d1ce+a0_0x583f('0x4d');}function getHint(_0x3129c5){const _0x16d38f=_0x3129c5[a0_0x583f('0x28')][a0_0x583f('0x28')]['querySelector'](a0_0x583f('0xed'))['getElementsByTagName']('input');const _0x4243ef=_0x16d38f[0x2]['value'];const _0x41b1b0=_0x16d38f[0x1][a0_0x583f('0xca')];if(viewerCodes[a0_0x583f('0x68')](statusCode)){document[a0_0x583f('0x3f')](a0_0x583f('0x107'))[a0_0x583f('0xa5')]=a0_0x583f('0xe2');}else{taskData[a0_0x583f('0xfc')](function(_0x4815b1){if(_0x4815b1['taskNo']==_0x4243ef){_0x4815b1[a0_0x583f('0xd3')][a0_0x583f('0xfc')](function(_0x25962b){if(_0x25962b['questionNo']==_0x41b1b0){const _0x4640e9=updateMachineTag(a0_0x583f('0x134'),_0x25962b[a0_0x583f('0xc0')]);document['querySelector'](a0_0x583f('0x107'))['textContent']=''+_0x4640e9;}});}});}$(a0_0x583f('0x6b'))[a0_0x583f('0x3b')]('show');}function makeInputDisabled(_0x51650c,_0x4d1c96){_0x51650c[a0_0x583f('0x158')]='btn\x20btn-success\x20task-answer';_0x51650c[a0_0x583f('0xf8')]=a0_0x583f('0x10f');_0x4d1c96[0x0][a0_0x583f('0x154')]=a0_0x583f('0x154');_0x51650c[a0_0x583f('0x154')]=a0_0x583f('0x154');const _0x1319dc=_0x51650c[a0_0x583f('0x28')][a0_0x583f('0x28')][a0_0x583f('0x3f')]('.task-hint');if(_0x1319dc){_0x1319dc[a0_0x583f('0xa5')]=getHintHtml(!![]);}try{_0x51650c[a0_0x583f('0x28')][a0_0x583f('0x28')][a0_0x583f('0x3f')](a0_0x583f('0x145'))[a0_0x583f('0x53')]='col-sm-4';_0x51650c[a0_0x583f('0x28')][a0_0x583f('0x28')][a0_0x583f('0x3f')](a0_0x583f('0x145'))[a0_0x583f('0xa5')]='';}catch(_0x5551d0){}}async function answerQuestion(_0x5e1625){const _0x29d64a=_0x5e1625[a0_0x583f('0x28')][a0_0x583f('0x28')][a0_0x583f('0x3f')](a0_0x583f('0xed'))[a0_0x583f('0xf')]('input');const _0x5a588a=_0x29d64a[0x0][a0_0x583f('0xca')];const _0x269912=_0x29d64a[0x1][a0_0x583f('0xca')];const _0x5e2b9f=_0x29d64a[0x2][a0_0x583f('0xca')];$[a0_0x583f('0x146')](a0_0x583f('0xaf')+roomCode+a0_0x583f('0xd6'),{'answer':_0x5a588a,'questionNo':_0x269912,'taskNo':_0x5e2b9f},async function(_0x221349){if(_0x221349[a0_0x583f('0x105')]){makeInputDisabled(_0x5e1625,_0x29d64a);displayMessages(a0_0x583f('0x156'),'success',_0x221349[a0_0x583f('0x12')]);let _0xc7d02a=await getTaskQuestionsCorrect(_0x5e2b9f);if(_0xc7d02a){let _0x30e7eb=_0x5e1625[a0_0x583f('0x28')][a0_0x583f('0x28')][a0_0x583f('0x28')]['parentElement'][a0_0x583f('0x28')];_0x30e7eb['className']=_0x30e7eb[a0_0x583f('0x53')][a0_0x583f('0x24')](a0_0x583f('0x94'),a0_0x583f('0x9'));_0x30e7eb[a0_0x583f('0x3f')](a0_0x583f('0x139'))[a0_0x583f('0x3f')](a0_0x583f('0xba'))[a0_0x583f('0x3f')]('.red')[a0_0x583f('0x53')]='hacker-green';}updateTaskData(_0x5e2b9f,_0x269912,!![]);if(roomDataGlobal[a0_0x583f('0x143')][a0_0x583f('0x14b')]){updateNetwork();}if(simpleRoom==a0_0x583f('0x3c')){showChart(roomCode);}}else{displayMessages(a0_0x583f('0xf4'),a0_0x583f('0x52'),_0x221349[a0_0x583f('0x12')]);if(_0x221349[a0_0x583f('0x55')]==0x1){makeInputDisabled(_0x5e1625,_0x29d64a);}}});}function updateTaskData(_0x2086a3,_0x4b3a37,_0x4eb8c3){const _0x5c56e7=taskData[_0x2086a3-0x1];for(let _0x2e3668 of _0x5c56e7[a0_0x583f('0xd3')]){if(_0x2e3668[a0_0x583f('0xc4')]==_0x4b3a37){_0x2e3668['correct']=_0x4eb8c3;break;}}}async function getTaskData(){return new Promise(async function(_0x11bf34,_0x4091ed){$[a0_0x583f('0x155')]('/api/tasks/'+roomCode,async function(_0x7c3c1c){return _0x11bf34(_0x7c3c1c[a0_0x583f('0x34')]['reverse']());});});}async function getTaskQuestionsCorrect(_0x22545b){return new Promise(async function(_0x1874b8,_0x188323){let _0x2eba8b=!![];taskData=await getTaskData();taskData['forEach'](function(_0xa9428c){if(_0xa9428c[a0_0x583f('0x15a')]==_0x22545b){_0xa9428c[a0_0x583f('0xd3')]['forEach'](function(_0x59de1c){if(!_0x59de1c[a0_0x583f('0x1c')]){_0x2eba8b==![];return _0x1874b8(![]);}});}});if(_0x2eba8b==!![]){const _0xef268a=calculatePerc({'data':taskData});if(_0xef268a==0x64){completeRoomPopup();}}return _0x1874b8(_0x2eba8b);});}function completeRoomPopup(){$(a0_0x583f('0x7a'))['animate']({'scrollTop':$(a0_0x583f('0x136'))[a0_0x583f('0x10a')]()[a0_0x583f('0x17')]},0x64);confettiRain(0x3);const _0xdb22c7=document[a0_0x583f('0x3f')](a0_0x583f('0xe3'));let _0xc642b=roomDataGlobal[a0_0x583f('0xf5')];_0xc642b[a0_0x583f('0x8f')](roomCode);const _0x3b5771=_0xc642b[a0_0x583f('0x129')]('%2C');const _0x3716c0=roomDataGlobal[a0_0x583f('0x5b')]+'\x20-\x20I\x20have\x20just\x20completed\x20this\x20room!\x20Check\x20it\x20out:\x20';const _0x1dbc10=a0_0x583f('0x4e')+roomCode;const _0x27b760=a0_0x583f('0xf1')+_0x1dbc10+a0_0x583f('0xd1')+_0x3716c0[a0_0x583f('0x24')](/ /g,a0_0x583f('0x6c'))+a0_0x583f('0x11e')+_0x3b5771;let _0x988b09=a0_0x583f('0xc3')+_0x27b760+a0_0x583f('0x12d');const _0x4dd07d=a0_0x583f('0x133');let _0x129880=a0_0x583f('0x130')+_0x4dd07d+a0_0x583f('0x3a');const _0x58f7ac=generateLinkedInShareLink(a0_0x583f('0xa7')+roomCode,roomDataGlobal[a0_0x583f('0x5b')],roomDataGlobal[a0_0x583f('0xa9')]);let _0x3ad930=a0_0x583f('0xe0')+_0x58f7ac+a0_0x583f('0x4b');_0xdb22c7[a0_0x583f('0xa5')]=_0x988b09+'\x20'+_0x129880+'\x20'+_0x3ad930;$(a0_0x583f('0x22'))[a0_0x583f('0x3b')]('show');}function addWriteups(_0x43a8d5){let _0x4db335=document[a0_0x583f('0x3f')](a0_0x583f('0x106'));_0x4db335[a0_0x583f('0xa5')]=getWriteupListHTML(_0x43a8d5);}function calculatePerc(_0x40b89f){let _0x4a29f8=_0x40b89f[a0_0x583f('0x34')];let _0x5787a2=0x0;let _0x1bfcbf=0x0;_0x4a29f8[a0_0x583f('0xfc')](function(_0x5270cc){_0x5270cc[a0_0x583f('0xd3')][a0_0x583f('0xfc')](function(_0x56a2c6){_0x5787a2+=0x1;if(_0x56a2c6[a0_0x583f('0x1c')]){_0x1bfcbf+=0x1;}});});let _0x1f6dee=(_0x1bfcbf/_0x5787a2*0x64)[a0_0x583f('0x122')](0x0);_0x1f6dee=!isNaN(_0x1f6dee)?_0x1f6dee:0x0;let _0x42b15f=_0x1f6dee;let _0x48cb86=a0_0x583f('0xb');if(_0x1f6dee>0x50){_0x48cb86=a0_0x583f('0x105');}else if(_0x1f6dee>=0x32){_0x48cb86=a0_0x583f('0x12c');}else if(_0x1f6dee>0x1e){_0x48cb86=a0_0x583f('0x52');}else if(_0x1f6dee==0x0){_0x42b15f=0x5;}document[a0_0x583f('0x3f')]('#progress-bar')['innerHTML']='<div\x20class=\x22progress\x20mb\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22progress-bar\x20bg-'+_0x48cb86+a0_0x583f('0xb3')+_0x42b15f+a0_0x583f('0x13')+_0x1f6dee+'%</div>\x20\x20\x20\x20\x20\x20\x20\x20</div>';return _0x1f6dee;}let taskData;let taskEl=document[a0_0x583f('0x3f')](a0_0x583f('0x72'));const hash=location[a0_0x583f('0x14c')];function getTasks(){$[a0_0x583f('0x155')]('/api/tasks/'+roomCode,async function(_0x6818af){document[a0_0x583f('0x3f')](a0_0x583f('0x72'))[a0_0x583f('0xa5')]='';if(_0x6818af[a0_0x583f('0x105')]){taskData=_0x6818af[a0_0x583f('0x34')];}else{taskData={};}let _0x2161c0={'first':![],'code':''};if(_0x6818af[a0_0x583f('0x34')]['length']==0x0){taskEl[a0_0x583f('0xa5')]=a0_0x583f('0x101');}else{taskEl[a0_0x583f('0xa5')]=a0_0x583f('0x27');}_0x6818af[a0_0x583f('0x34')][a0_0x583f('0xfc')](function(_0x39cd40){let _0x33cdcb=!![];const _0x3a3e8a=_0x39cd40['taskTitle'];const _0x322176=_0x39cd40[a0_0x583f('0x98')];const _0x4d37ab=_0x39cd40[a0_0x583f('0x15a')];const _0x477008=_0x39cd40[a0_0x583f('0x12a')];const _0x495e5f=_0x39cd40['task'];let _0x263c54='';if(viewerCodes[a0_0x583f('0x68')](statusCode)&&_0x39cd40['questions'][a0_0x583f('0xc1')]>0x0){_0x263c54+=showTasksForViewers(_0x39cd40['questions'],_0x4d37ab);_0x33cdcb=![];}else{_0x39cd40[a0_0x583f('0xd3')]['forEach'](function(_0x15df08,_0x491d4d){let _0x307dfd='4';if(_0x15df08[a0_0x583f('0xc0')][a0_0x583f('0xc1')]!=0x0&&!_0x15df08['correct']){_0x307dfd='2';}let _0x24699d='<button\x20type=\x22button\x22\x20class=\x22btn\x20btn-outline-success\x20task-answer\x22\x20onclick=\x22answerQuestion(this)\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<i\x20class=\x22far\x20fa-paper-plane\x22></i>\x20Submit\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>';let _0x299573='';if(_0x15df08['noAnswer']){_0x24699d=a0_0x583f('0xd9');_0x299573=a0_0x583f('0x154');}if(_0x15df08[a0_0x583f('0x1c')]&&!_0x15df08[a0_0x583f('0x76')]){_0x24699d='<button\x20type=\x22button\x22\x20class=\x22btn\x20btn-success\x20task-answer\x22\x20disabled>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Correct\x20Answer\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>';_0x299573='disabled';}else if(_0x15df08[a0_0x583f('0x1c')]){_0x24699d='<button\x20type=\x22button\x22\x20class=\x22btn\x20btn-success\x20task-answer\x22\x20disabled>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20Question\x20Done\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>';_0x299573=a0_0x583f('0x154');}else{_0x33cdcb=![];}let _0x3abe6e='';if(typeof _0x15df08[a0_0x583f('0x10')]!==a0_0x583f('0x7b')){_0x3abe6e=sanitiseHTML(_0x15df08[a0_0x583f('0x10')]);}let _0x49e1bd='';if(_0x15df08[a0_0x583f('0x11f')]>0x0){const _0x49fd9b=a0_0x583f('0x81');_0x49e1bd=a0_0x583f('0x15')+_0x49fd9b+a0_0x583f('0x10c')+_0x15df08[a0_0x583f('0x11f')]+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</span>';}_0x263c54+='<h5\x20class=\x22mt\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<table>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20class=\x22task-badge\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22badge\x20badge-secondary\x22>#'+(_0x491d4d+0x1)+a0_0x583f('0xff')+_0x49e1bd+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20class=\x22task-row-question\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22task-questions\x22>'+_0x15df08[a0_0x583f('0x83')]+'</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</table>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</h5>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22row\x20task-question\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22col-sm-8\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=\x22text\x22\x20class=\x22form-control\x20room-answer-field\x22\x20placeholder=\x22'+_0x15df08[a0_0x583f('0x99')]+'\x22\x20value=\x22'+_0x3abe6e+'\x22\x20'+_0x299573+a0_0x583f('0x60')+(_0x491d4d+0x1)+a0_0x583f('0x13a')+_0x4d37ab+a0_0x583f('0x137')+_0x24699d+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>';if(_0x15df08[a0_0x583f('0xc0')]['length']!=0x0){_0x263c54+=a0_0x583f('0x74')+getHintHtml(_0x15df08[a0_0x583f('0x1c')])+a0_0x583f('0x126');}_0x263c54+='</div>';});}if(_0x39cd40[a0_0x583f('0x95')][a0_0x583f('0xc1')]==0x0){_0x263c54=a0_0x583f('0x121');}let _0x304955;let _0x385e72='';if(_0x39cd40[a0_0x583f('0x12a')]=='vm'||_0x39cd40['taskType']==a0_0x583f('0x87')){_0x385e72=a0_0x583f('0x2e');if(allowDeployment){_0x304955='<button\x20type=\x22submit\x22\x20class=\x22btn\x20btn-success\x22\x20value=\x22'+_0x39cd40[a0_0x583f('0x7')]+a0_0x583f('0x75');}else{_0x304955=a0_0x583f('0x6f')+_0x39cd40[a0_0x583f('0x7')]+a0_0x583f('0xa4');}}else if(_0x39cd40[a0_0x583f('0x12a')]==a0_0x583f('0x70')){_0x385e72='<i\x20class=\x22far\x20fa-download\x20text-lblue\x22\x20data-toggle=\x22tooltip\x22\x20data-placement=\x22left\x22\x20title=\x22Task\x20includes\x20a\x20downloadable\x20file\x22></i>';let _0x59dcf4='';if(statusCode==0x2){_0x59dcf4=a0_0x583f('0x154');}_0x304955=a0_0x583f('0x48')+roomCode+a0_0x583f('0xdc')+_0x39cd40['uploadId']+a0_0x583f('0x73')+_0x59dcf4+'><i\x20class=\x22fas\x20fa-cloud-download-alt\x22></i>\x20Download</button>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</form>';}else if(_0x39cd40[a0_0x583f('0x12a')]==a0_0x583f('0xe')){_0x304955='';}let _0x14ba21=a0_0x583f('0x94');let _0x254876='red';if(_0x33cdcb){_0x14ba21='complete';_0x254876='hacker-green';}if(!_0x2161c0['first']&&hash[a0_0x583f('0xc1')]==0x0&&!_0x33cdcb||hash[a0_0x583f('0xef')]('#')[0x1]==_0x4d37ab){_0x2161c0[a0_0x583f('0x115')]=!![];_0x2161c0['code']='show';}else if(_0x2161c0['first']){_0x2161c0[a0_0x583f('0x55')]='';}let _0x868484=new Date(_0x39cd40[a0_0x583f('0x10d')]);_0x868484=[('0'+_0x868484['getDate']())[a0_0x583f('0x96')](-0x2),('0'+(_0x868484[a0_0x583f('0x140')]()+0x1))[a0_0x583f('0x96')](-0x2),_0x868484[a0_0x583f('0xfb')]()]['join']('/');let _0x31da6f='';if(_0x39cd40[a0_0x583f('0x61')]){dateDeadline=new Date(_0x39cd40['taskDeadline'])[a0_0x583f('0xdb')]('en-GB',{'timeZone':'UTC','month':a0_0x583f('0x1'),'hour':a0_0x583f('0xe9'),'minute':'2-digit','day':'numeric'});_0x31da6f=a0_0x583f('0x59')+dateDeadline+a0_0x583f('0x123');}let _0x332fca='<div\x20class=\x22row\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x09\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22col-sm-10\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'+_0x322176+a0_0x583f('0x4')+_0x304955+a0_0x583f('0x4c')+_0x31da6f+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x09\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x09\x20\x20\x20\x20\x20\x20\x20\x20</div>';if(_0x304955['length']==0x0&&_0x31da6f['length']==0x0&&_0x31da6f[a0_0x583f('0xc1')]==0x0){_0x332fca=_0x322176;}let _0x166269=a0_0x583f('0x84')+_0x14ba21+a0_0x583f('0x20')+_0x4d37ab+a0_0x583f('0x14f')+_0x4d37ab+a0_0x583f('0xc5')+_0x254876+a0_0x583f('0x78')+_0x4d37ab+a0_0x583f('0xc9')+_0x3a3e8a+a0_0x583f('0x38')+_0x385e72+a0_0x583f('0x8e')+_0x4d37ab+'\x22\x20class=\x22collapse\x20'+_0x2161c0[a0_0x583f('0x55')]+a0_0x583f('0x6a')+_0x332fca+'<hr\x20class=\x22hr-faded\x22>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'+_0x263c54+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>';taskEl[a0_0x583f('0xa5')]+=_0x166269;});if(_0x6818af[a0_0x583f('0x34')]['length']>0x0){calculatePerc(_0x6818af);}$(a0_0x583f('0x152'))[a0_0x583f('0x14d')]();removeFadeOut(document[a0_0x583f('0x5d')](a0_0x583f('0xcb')),0x3e8);if(roomDataGlobal[a0_0x583f('0x143')][a0_0x583f('0x14b')]){initNetwork(roomDataGlobal[a0_0x583f('0xd')]);}});setTimeout(function(){if(currentDeployedIP['length']>0x0)replaceText('*',a0_0x583f('0xbd'),currentDeployedIP,'g');setEnterAnswerEvent();},0x3e8);}function checkVideoTab(){if(hash==a0_0x583f('0x88')){activaTab(a0_0x583f('0xa3'));}}function activaTab(_0x1ddf5a){$('.nav-item\x20a[href=\x22#'+_0x1ddf5a+'\x22]')[a0_0x583f('0x13c')](a0_0x583f('0xf6'));}function getHintHtml(_0x5bd172){let _0x3a2b09='';let _0x382a23='btn-outline-warning';if(_0x5bd172){_0x382a23=a0_0x583f('0x8');}_0x3a2b09=a0_0x583f('0x151')+_0x382a23+a0_0x583f('0x8a');return _0x3a2b09;}function showTasksForViewers(_0x3a963f,_0x5940b6){let _0x1e7738='';_0x3a963f['forEach'](function(_0x4ad524,_0x3bc09a){let _0x435a21='4';if(_0x4ad524[a0_0x583f('0xc0')]['length']!=0x0&&!_0x4ad524['correct']){_0x435a21='2';}let _0x49d331='Please\x20login...';let _0x49a53b='/login';let _0x2992ef='';if(statusCode==0x2){_0x49d331=a0_0x583f('0xf9');_0x49a53b='#';_0x2992ef=a0_0x583f('0x31');}let _0x21a725=a0_0x583f('0xce')+_0x49a53b+a0_0x583f('0x11d')+_0x49d331+a0_0x583f('0x5c');let _0x39b0ff=a0_0x583f('0x154');let _0x434b8e='';_0x1e7738+=a0_0x583f('0x1e')+(_0x3bc09a+0x1)+'</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20class=\x22task-row-question\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22task-questions\x22>'+_0x4ad524['question']+a0_0x583f('0xbc')+_0x49d331+'\x22\x20value=\x22'+_0x434b8e+'\x22\x20'+_0x39b0ff+a0_0x583f('0x26')+(_0x3bc09a+0x1)+'\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=\x22hidden\x22\x20value=\x27'+_0x5940b6+'\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22col-sm-'+_0x435a21+'\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'+_0x21a725+a0_0x583f('0x2b');if(_0x4ad524[a0_0x583f('0xc0')][a0_0x583f('0xc1')]!=0x0){_0x1e7738+=a0_0x583f('0x2a');}_0x1e7738+=a0_0x583f('0x123');});return _0x1e7738;}const badgeBtnEl=document['querySelector'](a0_0x583f('0xa'));const awardsModalBody=document[a0_0x583f('0x3f')](a0_0x583f('0x128'));function checkRoomAwards(_0x29467d){$[a0_0x583f('0x155')](a0_0x583f('0x42'),async function(_0x3cc77f){for(let _0x342e53 of _0x3cc77f){if(_0x342e53[a0_0x583f('0xaa')][a0_0x583f('0x68')](_0x29467d)){badgeBtnEl['style'][a0_0x583f('0xd8')]='inline-block';const _0x3fc60f=htmlGenbadge(_0x342e53[a0_0x583f('0x104')],_0x342e53[a0_0x583f('0x5b')],_0x342e53['description'],!![]);awardsModalBody[a0_0x583f('0xa5')]+=_0x3fc60f;return;}}});}const sponsorEl=document[a0_0x583f('0x3f')]('#sponsor');function addSponsorData(_0x5c3df0){if(_0x5c3df0&&_0x5c3df0['enabled']){$['ajax']({'url':a0_0x583f('0x150')+_0x5c3df0['file'],'success':function(_0x30cd48){sponsorEl[a0_0x583f('0x3d')]['display']=a0_0x583f('0xbb');document[a0_0x583f('0x3f')](a0_0x583f('0x0'))['innerHTML']=_0x30cd48;}});}}function removeFadeOut(_0x494513,_0x18dc51){var _0x42b20b=_0x18dc51/0x3e8;_0x494513['style'][a0_0x583f('0xb6')]='opacity\x20'+_0x42b20b+a0_0x583f('0x1d');_0x494513[a0_0x583f('0x3d')][a0_0x583f('0xbe')]=0x0;setTimeout(function(){_0x494513[a0_0x583f('0x15c')][a0_0x583f('0xd0')](_0x494513);},_0x18dc51);}init();checkVideoTab();if(simpleRoom=='false'){showChart(roomCode);}checkRoomAwards(roomCode);getMyVote();getRoomVotes();window['addEventListener'](a0_0x583f('0x43'),function(){const _0x35aa0e=document[a0_0x583f('0x5d')](a0_0x583f('0xa8'));if(_0x35aa0e){_0x35aa0e[a0_0x583f('0x14')](a0_0x583f('0x43'),finalIntroStart(roomCode));}else{finalIntroStart(roomCode);}});</script></div><svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xlink="http://www.w3.org/1999/xlink" svgjs="http://svgjs.com/svgjs" style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;"><defs id="SvgjsDefs1002"></defs><polyline id="SvgjsPolyline1003" points="0,0"></polyline><path id="SvgjsPath1004" d="M0 0 "></path></svg><iframe style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;" name="_hjRemoteVarsFrame" title="_hjRemoteVarsFrame" id="_hjRemoteVarsFrame" src="TryHackMe%20|%20Web%20Fundamentals_files/box-469cf41adb11dc78be68c1ae7f9457a4.html"></iframe></body><div title="Google Translator Anywhere" class="itanywhere-activator itanywhere-bounceIn" style="left: 468px; top: 1330.8px; display: none;"></div></html>

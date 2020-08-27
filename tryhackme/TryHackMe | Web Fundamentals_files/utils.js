@@ -1,0 +1,1 @@
+function copyRoomToClipboard(){document['querySelector']('#copy-to-clipboard')['select']();document['execCommand']('copy');const _0x8f35a=$('#copy-room-link');_0x8f35a['attr']('data-original-title','Copied')['tooltip']('show');setTimeout(function(){_0x8f35a['tooltip']('hide');_0x8f35a['attr']('data-original-title','Copy\x20to\x20clipboard');},0x5dc);}
